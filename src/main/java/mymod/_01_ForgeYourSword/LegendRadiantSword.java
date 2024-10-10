@@ -9,7 +9,7 @@ import org.lwjgl.input.Mouse;
 
 import mymod.CustomEvents;
 import mymod.Main;
-import mymod._03_MagicArmor.CustomArmor;
+import mymod._03_MagicArmor.RadiantArmor;
 import mymod._03_MagicArmor.DestructionArmor;
 import mymod._03_MagicArmor.GodArmor;
 import mymod._03_MagicArmor.MysticalArmor;
@@ -48,11 +48,16 @@ public class LegendRadiantSword extends ItemSword
 	// Ability information NBT tags
 	private static NBTTagCompound customTags = new NBTTagCompound();
 	static {
-		customTags.setInteger("charge", 3);
-		customTags.setInteger("charge_increment", 3);
-		customTags.setInteger("min_charge", 3);
-		customTags.setInteger("max_charge", 30);
-		customTags.setInteger("cooldown_time", 50);
+//		customTags.setInteger("charge", 10);
+//		customTags.setInteger("charge_increment", 10);
+//		customTags.setInteger("min_charge", 10);
+//		customTags.setInteger("max_charge", 510);
+		customTags.setInteger("charge", 0);
+		customTags.setInteger("charge_increment", 1);
+		customTags.setInteger("min_charge", 0);
+		customTags.setInteger("max_charge", 20);
+		customTags.setInteger("explosion_increment", 8);
+		customTags.setInteger("cooldown_time", 100);
 		customTags.setInteger("max_usage_time", 80);
 		customTags.setFloat("radius_increment", 0.5f);
 		customTags.setInteger("min_radius", 20);
@@ -63,49 +68,6 @@ public class LegendRadiantSword extends ItemSword
 		super(Main.myToolMaterial23);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
-	
-//	@Override
-//	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn){
-//		if (!worldIn.isRemote) {
-//			this.time2=System.currentTimeMillis();
-//			if (time2-time1>=this.cooldownTime || player.capabilities.isCreativeMode) {
-//				int pieces=0;
-//				for (ItemStack armor:player.getArmorInventoryList()) {
-//					if (armor.getItem() instanceof CustomArmor || armor.getItem() instanceof DestructionArmor) {
-//						pieces+=1;
-//					}
-//				}
-//				if (pieces==4 || player.capabilities.isCreativeMode) {
-//					for (int i=1;i<=1;i++) {
-//						EntityLargeFireball entityFireball = new EntityLargeFireball(worldIn, player, 6F, 6F, 6F);
-//						entityFireball.explosionPower=(int)this.power;
-//						Vec3d looking = entityFireball.getLookVec();
-//			            if (looking != null) {
-//			            	entityFireball.motionX = looking.x*i;
-//			            	entityFireball.motionY = looking.y*i;
-//			            	entityFireball.motionZ = looking.z*i;
-//			            	entityFireball.accelerationX = entityFireball.motionX * 0.1D;
-//			            	entityFireball.accelerationY = entityFireball.motionY * 0.1D;
-//			            	entityFireball.accelerationZ = entityFireball.motionZ * 0.1D;
-//			            }
-//			            worldIn.spawnEntity(entityFireball);
-//					}
-//				}
-//				if (player.capabilities.isCreativeMode && this.power>9) this.power-=9;
-//				else this.power=9;
-//				this.time1=System.currentTimeMillis();
-//			}
-//			else {
-//				int cooldown=(int)(this.cooldownTime-(this.time2-this.time1))/1000;
-//				if (cooldown!=this.prevCooldown) {
-//					ITextComponent text = (ITextComponent) new TextComponentString("Ability in Cooldown: "+(cooldown+1)+" Seconds Left");
-//					player.sendMessage(text);
-//					this.prevCooldown=cooldown;
-//				}
-//			}
-//		}
-//		return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
-//	}
 	
 	/**
      * Called when the equipped item is right clicked.
@@ -120,7 +82,7 @@ public class LegendRadiantSword extends ItemSword
 		
     	for (ItemStack armor : playerIn.getArmorInventoryList()) 
     	{
-			if (armor.getItem() instanceof CustomArmor || armor.getItem() instanceof GodArmor || 
+			if (armor.getItem() instanceof RadiantArmor || armor.getItem() instanceof GodArmor || 
 				armor.getItem() instanceof DestructionArmor) 
 			{
 				armorPieces += 1;
@@ -221,8 +183,8 @@ public class LegendRadiantSword extends ItemSword
 					EntityLivingBase entity = entitylist.get(0);
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
-					CustomEvents.lightningStrikesL.add(pos);
-					CustomEvents.numBoltsL.add(c);
+					CustomEvents.radiantExplosionsL.add(pos);
+					CustomEvents.explosionPowerL.add((float) (c*nbt.getInteger("explosion_increment")));
 				}
 				else 
 				{
@@ -230,8 +192,8 @@ public class LegendRadiantSword extends ItemSword
 					{
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
-						CustomEvents.lightningStrikesL.add(pos);
-						CustomEvents.numBoltsL.add(c);
+						CustomEvents.radiantExplosionsL.add(pos);
+						CustomEvents.explosionPowerL.add((float) (c*nbt.getInteger("explosion_increment")));
 					}
 				}
 				
@@ -289,8 +251,8 @@ public class LegendRadiantSword extends ItemSword
 					EntityLivingBase entity = entitylist.get(0);
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
-					CustomEvents.lightningStrikesL.add(pos);
-					CustomEvents.numBoltsL.add(c);
+					CustomEvents.radiantExplosionsL.add(pos);
+					CustomEvents.explosionPowerL.add((float) (c*nbt.getInteger("explosion_increment")));
 				}
 				else 
 				{
@@ -298,8 +260,8 @@ public class LegendRadiantSword extends ItemSword
 					{
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
-						CustomEvents.lightningStrikesL.add(pos);
-						CustomEvents.numBoltsL.add(c);
+						CustomEvents.radiantExplosionsL.add(pos);
+						CustomEvents.explosionPowerL.add((float) (c*nbt.getInteger("explosion_increment")));
 					}
 				}
 				
@@ -335,6 +297,7 @@ public class LegendRadiantSword extends ItemSword
     	NBTTagCompound nbt = item.getTagCompound();
     	float range = nbt.getInteger("min_radius")+(Minecraft.getMinecraft().player.getItemInUseMaxCount()*nbt.getFloat("radius_increment"));
     	float maxRange = nbt.getInteger("min_radius")+(nbt.getInteger("max_usage_time")*nbt.getFloat("radius_increment"));
-    	return displayName+" | Explosion Power: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+//    	return displayName+" | Explosion Power: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+    	return displayName+" | Ability Charge: "+(nbt.getInteger("charge")*5)+"% | Range: "+range+"/"+maxRange;
     }
 }

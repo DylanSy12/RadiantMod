@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import org.lwjgl.input.Mouse;
 
 import com.google.common.collect.Multimap;
@@ -11,13 +13,17 @@ import com.google.common.collect.Multimap;
 import mymod.CustomEvents;
 import mymod.Main;
 import mymod.CodakidFiles.Codakid;
+import mymod._03_MagicArmor.RadiantArmor;
 import mymod._03_MagicArmor.DestructionArmor;
+import mymod._03_MagicArmor.GodArmor;
 import mymod._07_BuildAndBoom.EntityCustomExplosion;
 import mymod._07_BuildAndBoom.EntityGodEraserGrenade;
 import mymod._07_BuildAndBoom.ExplodingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -31,6 +37,7 @@ import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
@@ -51,227 +58,74 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class LegendDestructionSword extends ItemSword 
 {
-
-//	private long time1;
-//	private long time2;
-//	private int range;
-	private int radius = 60;
-//	private boolean using;
-	private boolean boosted = false;
-//	private int prevCooldown;
-//	private int cooldownTime;
-	private int cooldownTime = 100;
-	private int charge = 15;
-	private int chargeIncrement = 15;
-	private int minCharge = 15;
-	private int maxCharge = 765;
+	// Ability information NBT tags
+	private static NBTTagCompound customTags = new NBTTagCompound();
+	static {
+		customTags.setInteger("charge", 0);
+		customTags.setInteger("charge_increment", 1);
+		customTags.setInteger("min_charge", 0);
+		customTags.setInteger("max_charge", 20);
+		customTags.setFloat("cloud_increment", 1.5f);
+		customTags.setInteger("explosion_increment", 12);
+		customTags.setInteger("bolt_increment", 3);
+		customTags.setInteger("cooldown_time", 150);
+		customTags.setInteger("max_usage_time", 120);
+		customTags.setFloat("radius_increment", 0.5f);
+		customTags.setInteger("min_radius", 30);
+	}
 	
 	public LegendDestructionSword() 
 	{
 		super(Main.myToolMaterial24);
 		this.setCreativeTab(CreativeTabs.COMBAT);
-//		this.explosionStrength = 15;
-//		this.using = false;
-//		this.boosted = false;
-//		this.time1 = System.currentTimeMillis()-2500;
-//		this.prevCooldown = 0;
-//		this.cooldownTime = 5000;
 	}
 	
-//	@Override
-//	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
-//        
-//		if (!worldIn.isRemote) {
-//			this.time2 = System.currentTimeMillis();
-//			if (time2-time1 >= this.cooldownTime || player.capabilities.isCreativeMode) {
-//				int pieces = 0;
-//				for (ItemStack armor:player.getArmorInventoryList()) {
-//					if (armor.getItem() instanceof DestructionArmor) {
-//						pieces += 1;
-//					}
-//				}
-//				if (pieces == 4 || player.capabilities.isCreativeMode) {
-//					BlockPos pos1 = new BlockPos(player.posX-60, player.posY-60, player.posZ-60);
-//					BlockPos pos2 = new BlockPos(player.posX+60, player.posY+60, player.posZ+60);
-//					AxisAlignedBB box = new AxisAlignedBB(pos1, pos2);
-//					List<Entity> entityList = worldIn.getEntitiesWithinAABBExcludingEntity(player, box);
-//					List<EntityLivingBase> entitylist = new ArrayList<EntityLivingBase>();
-//					for (Entity entity : entityList) {
-//						if (entity instanceof EntityLivingBase) entitylist.add((EntityLivingBase)entity);
-//					}
-//					
-//					
-//					if (entitylist.size() == 1) {
-//						EntityLivingBase entity = entitylist.get(0);
-//						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-//						for (int i = 0;i < 3; i++) {
-//							if (this.explosionStrength > 255) {
-//								float r = this.explosionStrength/255;
-//								int ir = (int)r;
-//								if (r > ir) {
-//									CustomEvents.destructionExplosionsL.add(pos);
-//									CustomEvents.explosionPowerL.add(this.explosionStrength%255);
-//								}
-//								for (int a = 0; a < ir; a++) {
-//									CustomEvents.destructionExplosionsL.add(pos);
-//									CustomEvents.explosionPowerL.add(255f);
-//								}
-//							}
-//							else {
-//								CustomEvents.destructionExplosionsL.add(pos);
-//								CustomEvents.explosionPowerL.add(this.explosionStrength);
-//							}
-//						}
-//					}
-//					else {
-//						for (EntityLivingBase entity : entitylist) {
-//							BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-//							for (int i = 0; i < 3; i++) {
-//								if (this.explosionStrength > 255) {
-//									float r = this.explosionStrength/255;
-//									int ir = (int)r;
-//									if (r > ir) {
-//										CustomEvents.destructionExplosionsL.add(pos);
-//										CustomEvents.explosionPowerL.add(this.explosionStrength%255);
-//									}
-//									for (int a = 0; a < ir; a++) {
-//										CustomEvents.destructionExplosionsL.add(pos);
-//										CustomEvents.explosionPowerL.add(255f);
-//									}
-//								}
-//								else {
-//									CustomEvents.destructionExplosionsL.add(pos);
-//									CustomEvents.explosionPowerL.add(this.explosionStrength);
-//								}
-//							}
-//						}
-//					}
-//
-//					if (player.capabilities.isCreativeMode && this.explosionStrength > 15) this.explosionStrength -= 15;
-//					else this.explosionStrength = 15;
-//					this.time1 = System.currentTimeMillis();
-//				}
-//			}
-//			else {
-//				int cooldown = (int)(this.cooldownTime-(this.time2-this.time1))/1000;
-//				if (cooldown != this.prevCooldown) {
-//					ITextComponent text = (ITextComponent) new TextComponentString("Ability in Cooldown: "+(cooldown+1)+" Seconds Left");
-//					player.sendMessage(text);
-//					this.prevCooldown=cooldown;
-//				}
-//			}
-//		}
-//		return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
-//	}
-	
+	/**
+     * Called when the equipped item is right clicked.
+     */
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) 
-	{
-		if (!worldIn.isRemote) 
-		{
-			boolean isCreative = player.capabilities.isCreativeMode;
-			int armorPieces = 0;
-
-	        if (!isCreative) 
-	        {
-	        	player.getCooldownTracker().setCooldown(this, this.cooldownTime);
-	        	for (ItemStack armor : player.getArmorInventoryList()) 
-	        	{
-					if (armor.getItem() instanceof DestructionArmor) 
-					{
-						armorPieces += 1;
-					}
-				}
-	        }
-			
-			if (armorPieces == 4 || isCreative) 
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
+        
+        boolean isCreative = playerIn.capabilities.isCreativeMode;
+		int armorPieces = 0;
+		
+    	for (ItemStack armor : playerIn.getArmorInventoryList()) 
+    	{
+			if (armor.getItem() instanceof DestructionArmor) 
 			{
-				BlockPos pos1 = new BlockPos(player.posX-this.radius, player.posY-this.radius, player.posZ-this.radius);
-				BlockPos pos2 = new BlockPos(player.posX+this.radius, player.posY+this.radius, player.posZ+this.radius);
-				AxisAlignedBB box = new AxisAlignedBB(pos1, pos2);
-				List<Entity> entityList = worldIn.getEntitiesWithinAABBExcludingEntity(player, box);
-				List<EntityLivingBase> entitylist = new ArrayList<EntityLivingBase>();
-				
-				for (Entity entity : entityList) 
-				{
-					if (entity instanceof EntityLivingBase) 
-					{
-						entitylist.add((EntityLivingBase) entity);
-					}
-				}
-				
-				if (entitylist.size() == 1) 
-				{
-					EntityLivingBase entity = entitylist.get(0);
-					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-					
-					for (int i = 0; i < 3; i++) 
-					{
-						if (this.charge > 255) 
-						{
-							float r = this.charge/255;
-							int ir = (int) r;
-							if (r > ir) 
-							{
-								CustomEvents.radiantExplosionsL.add(pos);
-								CustomEvents.explosionPowerL.add((float) this.charge%255);
-							}
-							for (int a = 0; a < ir; a++) 
-							{
-								CustomEvents.radiantExplosionsL.add(pos);
-								CustomEvents.explosionPowerL.add(255f);
-							}
-						}
-						else 
-						{
-							CustomEvents.radiantExplosionsL.add(pos);
-							CustomEvents.explosionPowerL.add((float) this.charge);
-						}
-					}
-				}
-				else 
-				{
-					for (EntityLivingBase entity : entitylist) 
-					{
-						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-						
-						for (int i = 0; i < 3; i++) 
-						{
-							if (this.charge > 255) 
-							{
-								float r = this.charge/255;
-								int ir = (int) r;
-								if (r > ir) 
-								{
-									CustomEvents.radiantExplosionsL.add(pos);
-									CustomEvents.explosionPowerL.add((float) this.charge%255);
-								}
-								for (int a = 0; a < ir; a++) 
-								{
-									CustomEvents.radiantExplosionsL.add(pos);
-									CustomEvents.explosionPowerL.add(255f);
-								}
-							}
-							else 
-							{
-								CustomEvents.radiantExplosionsL.add(pos);
-								CustomEvents.explosionPowerL.add((float) this.charge);
-							}
-						}
-					}
-				}
-
-				if (isCreative && this.charge > this.minCharge) this.charge -= this.chargeIncrement;
-				else this.charge = this.minCharge;
+				armorPieces += 1;
 			}
 		}
-		
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
-	}
+        
+		if (armorPieces != 4 && !isCreative) 
+		{
+	        return armorPieces == 4 ? new ActionResult<ItemStack>(EnumActionResult.PASS, itemstack) : new ActionResult<ItemStack>(EnumActionResult.FAIL, itemstack);
+		}
+		else {
+			playerIn.setActiveHand(handIn);
+	        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+		}
+    }
 	
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) 
 	{
+		// Applies the custom NBT data if the sword does not already have it
+		if (stack.getTagCompound() != null) 
+		{
+			for (String key : customTags.getKeySet()) 
+			{
+				if (!stack.getTagCompound().hasKey(key)) 
+				{
+					stack.getTagCompound().merge(customTags);
+					break;
+				}
+			}
+		}
+		
+		// Applies enchantments if the sword does not have/has lower level versions of them
 		if (EnchantmentHelper.getEnchantmentLevel(Main.explosiveStrikeEnchant, stack) < 5) stack.addEnchantment(Main.explosiveStrikeEnchant, 5);
 		if (EnchantmentHelper.getEnchantmentLevel(Main.deathTouchEnchant, stack) < 1) stack.addEnchantment(Main.deathTouchEnchant, 1);
 		if (EnchantmentHelper.getEnchantmentLevel(Main.thunderingStrikeEnchant, stack) < 5) stack.addEnchantment(Main.thunderingStrikeEnchant, 5);
@@ -285,73 +139,199 @@ public class LegendDestructionSword extends ItemSword
 		if (EnchantmentHelper.getEnchantmentLevel(Main.witheringTouchEnchant, stack) < 4) stack.addEnchantment(Main.witheringTouchEnchant, 4);
 		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, stack) < 10) stack.addEnchantment(Enchantments.LOOTING, 10);
 		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.MENDING, stack) < 1) stack.addEnchantment(Enchantments.MENDING, 1);
-		
-		if (entityIn instanceof EntityPlayer)
-		{
-			if (isSelected == true) 
-			{
-				if (!Mouse.isButtonDown(0)) 
-				{
-					this.boosted = false;
-				}
-			}
-//			this.time2 = System.currentTimeMillis();
-//			if (time2-time1 >= this.cooldownTime) {
-//				if (this.using == true) {
-//					this.using = false;
-//					ITextComponent text = (ITextComponent) new TextComponentString(this.getItemStackDisplayName(stack)+"'s ability is now ready");
-//					entityIn.sendMessage(text);
-//				}
-//			}
-//			else this.using = true;
-		}
     }
 	
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) 
-	{
-		if (this.charge < this.maxCharge && this.boosted == false) 
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
+    {
+		// Charges the sword when attacking
+		NBTTagCompound nbt = stack.getTagCompound();
+		int c = nbt.getInteger("charge");
+		
+		if (c < nbt.getInteger("max_charge")) 
 		{
-			this.charge += this.chargeIncrement;
-			this.boosted = true;
-			if (attacker instanceof EntityPlayer) 
-			{
-				ITextComponent text = (ITextComponent) new TextComponentString("Explosion Power: "+this.charge);
-				attacker.sendMessage(text);
-			}
+			stack.getTagCompound().setInteger("charge", c+nbt.getInteger("charge_increment"));
 		}
 		
         return false;
     }
 	
-//	/**
-//     * Called when the player Left Clicks (attacks) an entity.
-//     * Processed before damage is done, if return value is true further processing is canceled
-//     * and the entity is not attacked.
-//     *
-//     * @param stack The Item being used
-//     * @param player The player that is attacking
-//     * @param entity The entity being attacked
-//     * @return True to cancel the rest of the interaction.
-//     */
-//    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
-//    {
-//        return false;
-//    }
+	/**
+     * How long it takes to use or consume an item
+     */
+	@Override
+    public int getMaxItemUseDuration(ItemStack stack)
+    {
+		return stack.getTagCompound().getInteger("max_usage_time");
+    }
 	
-//	/**
-//     * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
-//     */
-//    public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
-//    {
-//        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
-//
-//        if (equipmentSlot == EntityEquipmentSlot.MAINHAND || equipmentSlot == EntityEquipmentSlot.OFFHAND)
-//        {
-//            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, 0));
-//            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
-//        }
-//
-//        return multimap;
-//    }
+    /**
+     * Called when the player stops using an Item (stops holding the right mouse button).
+     */
+	@Override
+    public void onPlayerStoppedUsing(ItemStack item, World worldIn, EntityLivingBase entityLiving, int timeLeft)
+    {
+    	if (entityLiving instanceof EntityPlayer) 
+    	{
+    		EntityPlayer player = (EntityPlayer) entityLiving;
+	    	if (!worldIn.isRemote) 
+			{
+				boolean isCreative = player.capabilities.isCreativeMode;
+				NBTTagCompound nbt = item.getTagCompound();
+				int c = nbt.getInteger("charge");
+				float r = nbt.getInteger("min_radius")+((item.getMaxItemUseDuration()-timeLeft)*nbt.getFloat("radius_increment"));
+	
+				// Gets a list all entities within a certain range
+				BlockPos pos1 = new BlockPos(player.posX-r, player.posY-r, player.posZ-r);
+				BlockPos pos2 = new BlockPos(player.posX+r, player.posY+r, player.posZ+r);
+				AxisAlignedBB box = new AxisAlignedBB(pos1, pos2);
+				List<Entity> entityList = worldIn.getEntitiesWithinAABBExcludingEntity(player, box);
+				List<EntityLivingBase> entitylist = new ArrayList<EntityLivingBase>();
+				
+				for (Entity entity : entityList) 
+				{
+					if (entity instanceof EntityLivingBase) 
+					{
+						entitylist.add((EntityLivingBase) entity);
+					}
+				}
+				
+				// Adds the positions of all entities within range to the lists in CustomEvents, along with the ability's charge level
+				if (entitylist.size() == 1) 
+				{
+					EntityLivingBase entity = entitylist.get(0);
+					ArrayList<Float> details = new ArrayList<Float>();
+					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+					details.add(c*nbt.getFloat("cloud_increment"));
+					details.add((float) (c*nbt.getInteger("explosion_increment")));
+					details.add((float) (c*nbt.getInteger("bolt_increment")));
+					
+					CustomEvents.destructionPositionsL.add(pos);
+					CustomEvents.destructionDetailsL.add(details);
+				}
+				else 
+				{
+					for (EntityLivingBase entity : entitylist) 
+					{
+						ArrayList<Float> details = new ArrayList<Float>();
+						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+						details.add(c*nbt.getFloat("cloud_increment"));
+						details.add((float) (c*nbt.getInteger("explosion_increment")));
+						details.add((float) (c*nbt.getInteger("bolt_increment")));
+						
+						CustomEvents.destructionPositionsL.add(pos);
+						CustomEvents.destructionDetailsL.add(details);
+					}
+				}
+				
+				// Resets/decreases the sword's charge level and sets the ability's cooldown
+				if (isCreative && c > nbt.getInteger("min_charge")) item.getTagCompound().setInteger("charge", c-nbt.getInteger("charge_increment"));
+				else item.getTagCompound().setInteger("charge", nbt.getInteger("min_charge"));
+				if (!isCreative) player.getCooldownTracker().setCooldown(this, item.getTagCompound().getInteger("cooldown_time")+((item.getMaxItemUseDuration()-timeLeft)/2));
+			}
+    	}
+    }
+    
+    
+	/**
+     * returns the action that specifies what animation to play when the items is being used
+     */
+    public EnumAction getItemUseAction(ItemStack stack)
+    {
+        return EnumAction.BLOCK;
+    }
+	
+	/**
+     * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
+     * the Item before the action is complete.
+     */
+    public ItemStack onItemUseFinish(ItemStack item, World worldIn, EntityLivingBase entityLiving)
+    {
+    	if (entityLiving instanceof EntityPlayer) 
+    	{
+    		EntityPlayer player = (EntityPlayer) entityLiving;
+	    	if (!worldIn.isRemote) 
+			{
+				boolean isCreative = player.capabilities.isCreativeMode;
+				NBTTagCompound nbt = item.getTagCompound();
+				int c = nbt.getInteger("charge");
+				float r = nbt.getInteger("min_radius")+(nbt.getInteger("max_usage_time")*nbt.getFloat("radius_increment"));
+					
+				// Gets a list all entities within a certain range
+				BlockPos pos1 = new BlockPos(player.posX-r, player.posY-r, player.posZ-r);
+				BlockPos pos2 = new BlockPos(player.posX+r, player.posY+r, player.posZ+r);
+				AxisAlignedBB box = new AxisAlignedBB(pos1, pos2);
+				List<Entity> entityList = worldIn.getEntitiesWithinAABBExcludingEntity(player, box);
+				List<EntityLivingBase> entitylist = new ArrayList<EntityLivingBase>();
+				
+				for (Entity entity : entityList) 
+				{
+					if (entity instanceof EntityLivingBase) 
+					{
+						entitylist.add((EntityLivingBase) entity);
+					}
+				}
+				
+				// Adds the positions of all entities within range to the lists in CustomEvents, along with the ability's charge level
+				if (entitylist.size() == 1) 
+				{
+					EntityLivingBase entity = entitylist.get(0);
+					ArrayList<Float> details = new ArrayList<Float>();
+					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+					details.add(c*nbt.getFloat("cloud_increment"));
+					details.add((float) (c*nbt.getInteger("explosion_increment")));
+					details.add((float) (c*nbt.getInteger("bolt_increment")));
+					
+					CustomEvents.destructionPositionsL.add(pos);
+					CustomEvents.destructionDetailsL.add(details);
+				}
+				else 
+				{
+					for (EntityLivingBase entity : entitylist) 
+					{
+						ArrayList<Float> details = new ArrayList<Float>();
+						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+						details.add(c*nbt.getFloat("cloud_increment"));
+						details.add((float) (c*nbt.getInteger("explosion_increment")));
+						details.add((float) (c*nbt.getInteger("bolt_increment")));
+						
+						CustomEvents.destructionPositionsL.add(pos);
+						CustomEvents.destructionDetailsL.add(details);
+					}
+				}
+				
+				// Resets/decreases the sword's charge level and radius and sets the ability's cooldown
+				if (isCreative && c > nbt.getInteger("min_charge")) item.getTagCompound().setInteger("charge", c-nbt.getInteger("charge_increment"));
+				else item.getTagCompound().setInteger("charge", nbt.getInteger("min_charge"));
+				if (!isCreative) player.getCooldownTracker().setCooldown(this, item.getTagCompound().getInteger("cooldown_time")+(item.getTagCompound().getInteger("max_usage_time")/2));
+			}
+    	}
+        return item;
+    }
+    
+    //TODO Use to add details to item info display
+    /**
+     * allows items to add custom lines of information to the mouseover description
+     */
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+    }
+    
+    /**
+     * Allow the item one last chance to modify its name used for the
+     * tool highlight useful for adding something extra that can't be removed
+     * by a user in the displayed name, such as a mode of operation.
+     *
+     * @param item the ItemStack for the item.
+     * @param displayName the name that will be displayed unless it is changed in this method.
+     */
+    @Override
+    public String getHighlightTip(ItemStack item, String displayName)
+    {
+    	NBTTagCompound nbt = item.getTagCompound();
+    	float range = nbt.getInteger("min_radius")+(Minecraft.getMinecraft().player.getItemInUseMaxCount()*nbt.getFloat("radius_increment"));
+    	float maxRange = nbt.getInteger("min_radius")+(nbt.getInteger("max_usage_time")*nbt.getFloat("radius_increment"));
+    	return displayName+" | Ability Charge: "+(nbt.getInteger("charge")*5)+"% | Range: "+range+"/"+maxRange;
+    }
 }

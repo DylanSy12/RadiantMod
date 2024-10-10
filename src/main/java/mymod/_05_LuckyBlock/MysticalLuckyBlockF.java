@@ -18,9 +18,9 @@ import net.minecraft.world.World;
 
 import mymod.Main;
 import mymod.CodakidFiles.Codakid;
-import mymod._01_ForgeYourSword.CustomMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
 import mymod._07_BuildAndBoom.EntityClusterGrenade;
 import mymod._07_BuildAndBoom.EntityEraserGrenade;

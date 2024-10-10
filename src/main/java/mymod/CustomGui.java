@@ -7,6 +7,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
 import mymod._01_ForgeYourSword.LegendGodSword;
+import mymod._01_ForgeYourSword.LegendMysticalSword;
+import mymod._01_ForgeYourSword.LegendRadiantSword;
 
 import java.util.Collection;
 import java.util.List;
@@ -702,10 +704,12 @@ public class CustomGui extends Gui
         Minecraft.getMinecraft().mcProfiler.startSection("selectedItemName");
         ScaledResolution scaledRes = new ScaledResolution(Minecraft.getMinecraft());
 
-        if (item.getItem() instanceof LegendGodSword)
+        if (item.getItem() instanceof LegendMysticalSword || item.getItem() instanceof LegendRadiantSword || item.getItem() instanceof LegendGodSword)
         {
 	        String s = item.getDisplayName();
-	        s = ((LegendGodSword) item.getItem()).getHighlightTip(item, s);
+	        if (item.getItem() instanceof LegendMysticalSword) s = ((LegendMysticalSword) item.getItem()).getHighlightTip(item, s);
+	        else if (item.getItem() instanceof LegendRadiantSword) s = ((LegendRadiantSword) item.getItem()).getHighlightTip(item, s);
+	        else if (item.getItem() instanceof LegendGodSword) s = ((LegendGodSword) item.getItem()).getHighlightTip(item, s);
 	        
 	        if (item.hasDisplayName())
 	        {

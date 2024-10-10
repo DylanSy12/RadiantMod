@@ -25,10 +25,10 @@ import net.minecraft.world.gen.feature.WorldGenEndPodium;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import mymod.Main;
 import mymod.CodakidFiles.Codakid;
-import mymod._01_ForgeYourSword.CustomMonster;
-import mymod._04_CreateACreature.DestructionMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
+import mymod._04_CreateACreature.DestructionLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
 import mymod._07_BuildAndBoom.EntityClusterGrenade;
 import mymod._07_BuildAndBoom.EntityEraserGrenade;
@@ -194,21 +194,21 @@ public class WorldEndingLuckyBlock extends Block {
 		}
 		else if(number <= 102)
 		{
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 107)
 		{
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
 		}
 		else if(number <= 113)
 		{
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 117)
 		{
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
 		}
 		else if(number <= 122)
 		{
@@ -244,21 +244,21 @@ public class WorldEndingLuckyBlock extends Block {
 		}
 		else if(number <= 145)
 		{
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new GodMonster(world));
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new CustomMonster(world));
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new GodLord(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new RadiantLord(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 150)
 		{
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new CustomMonster(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new RadiantLord(world));
 		}
 		else if(number <= 156)
 		{
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 160)
 		{
-			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new GodMonster(world));
+			for (int i=0;i<rand.nextInt(64);i++) Codakid.spawnEntity(world, pos, new GodLord(world));
 		}
 		else if(number <= 165)
 		{
@@ -403,7 +403,7 @@ public class WorldEndingLuckyBlock extends Block {
 			System.out.println("Power: "+power);
 		}
 		else if(number <= 270) {
-			DestructionMonster monster = new DestructionMonster(world);
+			DestructionLord monster = new DestructionLord(world);
 			monster.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.destructionHelmet));
 			monster.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.destructionChestplate));
 			monster.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.destructionLeggings));
@@ -412,7 +412,7 @@ public class WorldEndingLuckyBlock extends Block {
 			Codakid.spawnEntity(world, pos, monster);
 		}
 		else if(number <= 280) {
-			GodMonster monster = new GodMonster(world);
+			GodLord monster = new GodLord(world);
 			monster.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.godHelmet));
 			monster.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.godChestplate));
 			monster.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.godLeggings));
@@ -421,7 +421,7 @@ public class WorldEndingLuckyBlock extends Block {
 			Codakid.spawnEntity(world, pos, monster);
 		}
 		else if(number <= 290) {
-			CustomMonster monster = new CustomMonster(world);
+			RadiantLord monster = new RadiantLord(world);
 			monster.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.myHelmet));
 			monster.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.myChestplate));
 			monster.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.myLeggings));
@@ -430,7 +430,7 @@ public class WorldEndingLuckyBlock extends Block {
 			Codakid.spawnEntity(world, pos, monster);
 		}
 		else if(number <= 300) {
-			MysticalMonster monster = new MysticalMonster(world);
+			MysticalLord monster = new MysticalLord(world);
 			monster.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.mysticalHelmet));
 			monster.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.mysticalChestplate));
 			monster.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.mysticalLeggings));

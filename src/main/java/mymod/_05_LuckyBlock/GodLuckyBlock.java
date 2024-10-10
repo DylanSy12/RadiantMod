@@ -19,9 +19,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import mymod.Main;
 import mymod.CodakidFiles.Codakid;
-import mymod._01_ForgeYourSword.CustomMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
 import mymod._07_BuildAndBoom.EntityClusterGrenade;
 import mymod._07_BuildAndBoom.EntityGodEraserGrenade;
@@ -424,15 +424,15 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number <= 245)
 		{
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
 		}
 		else if(number <= 250)
 		{
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 255)
 		{
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
 		}
 		else if(number<=260)
 		{
@@ -521,13 +521,13 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.worldEndGrenade, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.worldEraserGrenade, rand.nextInt(65));
 			for (int g=0;g<rand.nextInt(65);g++) {
-				Codakid.spawnEntity(world, pos, new GodMonster(world));
+				Codakid.spawnEntity(world, pos, new GodLord(world));
 			}
 			for (int r=0;r<rand.nextInt(65);r++) {
-				Codakid.spawnEntity(world, pos, new CustomMonster(world));
+				Codakid.spawnEntity(world, pos, new RadiantLord(world));
 			}
 			for (int m=0;m<rand.nextInt(65);m++) {
-				Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+				Codakid.spawnEntity(world, pos, new MysticalLord(world));
 			}
 			for (int i=1;i<=5;i++) {
 				ItemStack heat = new ItemStack(Items.ENCHANTED_BOOK,rand.nextInt(65));
@@ -604,9 +604,9 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.worldErasingGrenade, 1);
 			Codakid.spawnItem(world, pos, Main.worldEndGrenade, 1);
 			Codakid.spawnItem(world, pos, Main.worldEraserGrenade, 1);
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 			for (int i=1;i<=5;i++) {
 				ItemStack heat = new ItemStack(Items.ENCHANTED_BOOK);
 				heat.addEnchantment(Main.heatEnchant, i);

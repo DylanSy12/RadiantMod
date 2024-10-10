@@ -14,20 +14,20 @@ import org.lwjgl.opengl.GL11;
 
 import akka.actor.FSM.Event;
 import mymod.Commands.CommandCancelNuke;
-import mymod._01_ForgeYourSword.CustomMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
 import mymod._01_ForgeYourSword.DestructionSword;
 import mymod._01_ForgeYourSword.LegendDestructionSword;
 import mymod._01_ForgeYourSword.LegendGodSword;
 import mymod._01_ForgeYourSword.LegendMysticalSword;
 import mymod._01_ForgeYourSword.LegendRadiantSword;
-import mymod._03_MagicArmor.CustomArmor;
+import mymod._03_MagicArmor.RadiantArmor;
 import mymod._03_MagicArmor.DestructionArmor;
 import mymod._03_MagicArmor.GodArmor;
 import mymod._03_MagicArmor.GodlyPotionOrb;
 import mymod._03_MagicArmor.MysticalArmor;
-import mymod._04_CreateACreature.DestructionMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
+import mymod._04_CreateACreature.DestructionLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
 import mymod._07_BuildAndBoom.ExplodingBlock;
 import mymod._07_BuildAndBoom.SphereExplosion;
 import mymod._07_BuildAndBoom.SpherePoints;
@@ -88,6 +88,7 @@ import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent.KeyboardInputEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderTooltipEvent;
@@ -105,6 +106,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -116,15 +118,19 @@ public class CustomEvents {
 	public static List<BlockPos> cloudAreas = new ArrayList<BlockPos>();
 	public static List<BlockPos> lightningStrikes = new ArrayList<BlockPos>();
 	public static List<BlockPos> radiantExplosions = new ArrayList<BlockPos>();
+	public static List<BlockPos> destructionPositions = new ArrayList<BlockPos>();
 	public static List<Float> effectRadius = new ArrayList<Float>();
 	public static List<Integer> numBolts = new ArrayList<Integer>();
 	public static List<Float> explosionPower = new ArrayList<Float>();
+	public static List<ArrayList<Float>> destructionDetails = new ArrayList<ArrayList<Float>>();
 	public static List<BlockPos> cloudAreasL = new ArrayList<BlockPos>();
 	public static List<BlockPos> lightningStrikesL = new ArrayList<BlockPos>();
 	public static List<BlockPos> radiantExplosionsL = new ArrayList<BlockPos>();
+	public static List<BlockPos> destructionPositionsL = new ArrayList<BlockPos>();
 	public static List<Float> effectRadiusL = new ArrayList<Float>();
 	public static List<Integer> numBoltsL = new ArrayList<Integer>();
 	public static List<Float> explosionPowerL = new ArrayList<Float>();
+	public static List<ArrayList<Float>> destructionDetailsL = new ArrayList<ArrayList<Float>>();
 	public static List<SphereExplosion> sphereExplosionList = new ArrayList<SphereExplosion>();
 	public static Map<EntityPlayer, Long> doomTimers = new HashMap();
 	public static Map<EntityPlayer, Long> shieldCooldowns = new HashMap();
@@ -132,6 +138,7 @@ public class CustomEvents {
 	public static Map<EntityPlayer, Float> prevHealths = new HashMap();
 	public static Map<EntityPlayer, Boolean> curseKills = new HashMap();
 	public static Map<EntityPlayer, Boolean> maxHealthBoost = new HashMap();
+	public static boolean keyBindSwitchDestructionSwordChargeModePressed = false;
 //	public static Map<EntityLivingBase, Long> shieldCooldownTimers = new HashMap();
 //	public static Map<EntityLivingBase, Integer> entityShieldStrength = new HashMap();
 	
@@ -233,27 +240,27 @@ public class CustomEvents {
 		World world = event.getEntity().getEntityWorld();
 		if (event.getEntity() instanceof EntityLivingBase) {
 			EntityLivingBase entity = (EntityLivingBase) event.getEntity();
-			if (entity instanceof DestructionMonster || entity instanceof GodMonster || entity instanceof MysticalMonster || entity instanceof CustomMonster) {
-				if (entity instanceof DestructionMonster) {
-					DestructionMonster destructionMonster = (DestructionMonster)entity;
+			if (entity instanceof DestructionLord || entity instanceof GodLord || entity instanceof MysticalLord || entity instanceof RadiantLord) {
+				if (entity instanceof DestructionLord) {
+					DestructionLord destructionMonster = (DestructionLord)entity;
 					System.out.println("DestructionLord Health:" + (destructionMonster.getHealth()+destructionMonster.healthExtra));
 				}
-				else if (entity instanceof GodMonster) {
-					GodMonster godMonster = (GodMonster)entity;
+				else if (entity instanceof GodLord) {
+					GodLord godMonster = (GodLord)entity;
 					System.out.println("GodLord Health:" + (godMonster.getHealth()));
 				}
-				else if (entity instanceof CustomMonster) {
-					CustomMonster radiantMonster = (CustomMonster)entity;
+				else if (entity instanceof RadiantLord) {
+					RadiantLord radiantMonster = (RadiantLord)entity;
 					System.out.println("RadiantLord Health:" + (radiantMonster.getHealth()));
 				}
-				else if (entity instanceof MysticalMonster) {
-					MysticalMonster mysticalMonster = (MysticalMonster)entity;
+				else if (entity instanceof MysticalLord) {
+					MysticalLord mysticalMonster = (MysticalLord)entity;
 					System.out.println("MysticalLord Health:" + (mysticalMonster.getHealth()));
 				}
 			}
 			Random rand = new Random();
 			// destruction lord damage
-			if (event.getSource().getTrueSource() instanceof DestructionMonster && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
+			if (event.getSource().getTrueSource() instanceof DestructionLord && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
 				if (!world.isRemote) {
 					int x = rand.nextInt(2)-1;
         			int z = rand.nextInt(2)-1;
@@ -267,7 +274,7 @@ public class CustomEvents {
 					BlockPos pos = new BlockPos(entity.posX+x, entity.posY, entity.posZ+z);
 					float radius = 3;
 					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
-	                entityareaeffectcloud.setOwner((DestructionMonster) event.getSource().getTrueSource());
+	                entityareaeffectcloud.setOwner((DestructionLord) event.getSource().getTrueSource());
 	                entityareaeffectcloud.setParticle(EnumParticleTypes.REDSTONE);
 	                entityareaeffectcloud.setRadius(radius);
 	                entityareaeffectcloud.setDuration(200);
@@ -279,7 +286,7 @@ public class CustomEvents {
 				}
 			}
 			// god lord damage
-			if (event.getSource().getTrueSource() instanceof GodMonster && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
+			if (event.getSource().getTrueSource() instanceof GodLord && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
 				if (!world.isRemote) {
 					int x = rand.nextInt(2)-1;
         			int z = rand.nextInt(2)-1;
@@ -291,7 +298,7 @@ public class CustomEvents {
 				}
 			}
 			// radiant lord damage
-			if (event.getSource().getTrueSource() instanceof CustomMonster && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
+			if (event.getSource().getTrueSource() instanceof RadiantLord && !event.getSource().isExplosion() && event.getSource().getTrueSource() != entity) {
 				if (!world.isRemote) {
 					int x = rand.nextInt(4)-2;
         			int z = rand.nextInt(4)-2;
@@ -299,14 +306,14 @@ public class CustomEvents {
 				}
 			}
 			// mystical lord damage
-			if (event.getSource().getTrueSource() instanceof MysticalMonster && event.getSource().getTrueSource() != entity) {
+			if (event.getSource().getTrueSource() instanceof MysticalLord && event.getSource().getTrueSource() != entity) {
 				if (!world.isRemote) {
 					int x = rand.nextInt(4)-2;
         			int z = rand.nextInt(4)-2;
 					BlockPos pos = new BlockPos(entity.posX+x, entity.posY, entity.posZ+z);
 					float radius = 1.5f;
 					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
-	                entityareaeffectcloud.setOwner((MysticalMonster)event.getSource().getTrueSource());
+	                entityareaeffectcloud.setOwner((MysticalLord)event.getSource().getTrueSource());
 	                entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
 	                entityareaeffectcloud.setRadius(radius);
 	                entityareaeffectcloud.setDuration(100);
@@ -359,8 +366,8 @@ public class CustomEvents {
 		EntityLivingBase entity = event.getEntityLiving();
 		World world = entity.getEntityWorld();
 		time4 = System.currentTimeMillis();
-		if (entity instanceof DestructionMonster) {
-			DestructionMonster destructionMonster = (DestructionMonster)entity;
+		if (entity instanceof DestructionLord) {
+			DestructionLord destructionMonster = (DestructionLord)entity;
 			if (destructionMonster.isPotionActive(MobEffects.RESISTANCE) == false) {
 				destructionMonster.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 450, 2));
 			}
@@ -410,8 +417,8 @@ public class CustomEvents {
 			                entityareaeffectcloud.setRadius(radius);
 			                entityareaeffectcloud.setDuration(200);
 			                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
 			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.WITHER, 300, 9));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
 			                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			                world.playEvent(2006, pos, 0);
 			                world.spawnEntity(entityareaeffectcloud);
@@ -421,8 +428,8 @@ public class CustomEvents {
 				}
 			}
 		}
-		else if (entity instanceof GodMonster) {
-			GodMonster godMonster = (GodMonster)entity;
+		else if (entity instanceof GodLord) {
+			GodLord godMonster = (GodLord)entity;
 			if (godMonster.isPotionActive(MobEffects.RESISTANCE) == false) {
 				godMonster.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 450, 1));
 			}
@@ -453,8 +460,8 @@ public class CustomEvents {
 				}
 			}
 		}
-		else if (entity instanceof CustomMonster) {
-			CustomMonster radiantMonster = (CustomMonster)entity;
+		else if (entity instanceof RadiantLord) {
+			RadiantLord radiantMonster = (RadiantLord)entity;
 			if (time4-radiantMonster.explosionCooldown >= 20000) {
 				BlockPos pos1 = new BlockPos(radiantMonster.posX-20, radiantMonster.posY-20, radiantMonster.posZ-20);
 				BlockPos pos2 = new BlockPos(radiantMonster.posX+20, radiantMonster.posY+20, radiantMonster.posZ+20);
@@ -478,8 +485,8 @@ public class CustomEvents {
 				}
 			}
 		}
-		else if (entity instanceof MysticalMonster) {
-			MysticalMonster mysticalMonster = (MysticalMonster)entity;
+		else if (entity instanceof MysticalLord) {
+			MysticalLord mysticalMonster = (MysticalLord)entity;
 			if (time4-mysticalMonster.effectCooldown >= 20000) {
 				BlockPos pos1 = new BlockPos(mysticalMonster.posX-20, mysticalMonster.posY-20, mysticalMonster.posZ-20);
 				BlockPos pos2 = new BlockPos(mysticalMonster.posX+20, mysticalMonster.posY+20, mysticalMonster.posZ+20);
@@ -504,8 +511,8 @@ public class CustomEvents {
 			                entityareaeffectcloud.setRadius(radius);
 			                entityareaeffectcloud.setDuration(150);
 			                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
 			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 200, 6));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
 			                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			                world.playEvent(2006, pos, 0);
 			                world.spawnEntity(entityareaeffectcloud);
@@ -519,146 +526,201 @@ public class CustomEvents {
 	
 	@SubscribeEvent
 	public void CustomTickEvents(TickEvent.WorldTickEvent event) {
-		World world = event.world;
-		if (!world.isRemote) {
-			if (!lightningStrikes.isEmpty() && !numBolts.isEmpty()) {
-				BlockPos pos = lightningStrikes.get(0);
-				int bolts = numBolts.get(0);
-				for (int i = 0; i < bolts; i++) {
-					EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
-					bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
-					world.spawnEntity(bolt);
-					world.addWeatherEffect(bolt);
+//		if (event.phase == TickEvent.Phase.END)
+//		{
+			World world = event.world;
+			if (!world.isRemote) {
+				if (!lightningStrikes.isEmpty() && !numBolts.isEmpty()) {
+					BlockPos pos = lightningStrikes.get(0);
+					int bolts = numBolts.get(0);
+					for (int i = 0; i < bolts; i++) {
+						EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+						bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						world.spawnEntity(bolt);
+						world.addWeatherEffect(bolt);
+					}
+					for (int i = 0; i < 2; i++) world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts/2, false);
+					lightningStrikes.remove(pos);
+					numBolts.remove(0);
 				}
-				world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts, false);
-				lightningStrikes.remove(pos);
-				numBolts.remove(0);
-			}
-			if (!lightningStrikesL.isEmpty() && !numBoltsL.isEmpty()) {
-				BlockPos pos = lightningStrikesL.get(0);
-				int bolts = numBoltsL.get(0);
-				for (int i = 0; i < bolts; i++) {
-					EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
-					bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
-					world.spawnEntity(bolt);
-					world.addWeatherEffect(bolt);
+				if (!lightningStrikesL.isEmpty() && !numBoltsL.isEmpty()) {
+					BlockPos pos = lightningStrikesL.get(0);
+					int bolts = numBoltsL.get(0);
+					for (int i = 0; i < bolts; i++) {
+						EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+						bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						world.spawnEntity(bolt);
+						world.addWeatherEffect(bolt);
+					}
+					for (int i = 0; i < 4; i++) world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts/2, true);
+	//				System.out.println("bolts: "+bolts);
+					lightningStrikesL.remove(pos);
+					numBoltsL.remove(0);
 				}
-				for (int i = 0; i < 3; i++) world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts, true);
-//				System.out.println("bolts: "+bolts);
-				lightningStrikesL.remove(pos);
-				numBoltsL.remove(0);
-			}
-			if (!radiantExplosions.isEmpty() && !explosionPower.isEmpty()) {
-				BlockPos pos = radiantExplosions.get(0);
-				float power = explosionPower.get(0);
-				world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
-				radiantExplosions.remove(pos);
-				explosionPower.remove(power);
-			}
-			if (!radiantExplosionsL.isEmpty() && !explosionPowerL.isEmpty()) {
-				BlockPos pos = radiantExplosionsL.get(0);
-				float power = explosionPowerL.get(0);
-				world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
-				radiantExplosionsL.remove(pos);
-				explosionPowerL.remove(power);
-			}
-			if (!cloudAreas.isEmpty() && !effectRadius.isEmpty()) {
-				BlockPos pos = cloudAreas.get(0);
-				float radius = effectRadius.get(0);
-				EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
-                entityareaeffectcloud.setOwner(null);
-                entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
-                entityareaeffectcloud.setRadius(radius);
-                entityareaeffectcloud.setDuration(600);
-//                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 1));
-                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
-                world.playEvent(2006, pos, 0);
-                world.spawnEntity(entityareaeffectcloud);
-				cloudAreas.remove(pos);
-				effectRadius.remove(radius);
-			}
-			if (!cloudAreasL.isEmpty() && !effectRadiusL.isEmpty()) {
-				BlockPos pos = cloudAreasL.get(0);
-				float radius = effectRadiusL.get(0);
-				EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
-                entityareaeffectcloud.setOwner(null);
-                entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
-                entityareaeffectcloud.setRadius(radius);
-                entityareaeffectcloud.setDuration(1800);
-//                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
-                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 300, 9));
-                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
-                world.playEvent(2006, pos, 0);
-                world.spawnEntity(entityareaeffectcloud);
-				cloudAreasL.remove(pos);
-				effectRadiusL.remove(radius);
-			}
-			int trigger = 0;
-			for (int i = 0; i < 2; i++) {
-				if (!sphereExplosionList.isEmpty()) {
-					for (int s = sphereExplosionList.size()-1; s >= 0; s--) {
-						SphereExplosion sphereExplosion = sphereExplosionList.get(s);
-						if (sphereExplosion.currentLayer <= sphereExplosion.radius) {
-							System.out.println(sphereExplosion.currentLayer);
-							SpherePoints points = new SpherePoints();
-							for (BlockPos pos : points.getPointsOnSphere(sphereExplosion.center, sphereExplosion.currentLayer)) {
-								if (world.getBlockState(pos) != Blocks.BEDROCK.getDefaultState()) {
-									world.setBlockToAir(pos);
-									if (sphereExplosion.currentLayer%2 == 0) {
-										if (sphereExplosion.currentLayer == sphereExplosion.radius) {
-											if (trigger%15 == 0) {
-												world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 20, true, true);
-												for (int l = 0; l < 2; l++) {
-													EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
-													bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
-													world.spawnEntity(bolt);
-													world.addWeatherEffect(bolt);
+				if (!radiantExplosions.isEmpty() && !explosionPower.isEmpty()) {
+					BlockPos pos = radiantExplosions.get(0);
+					float power = explosionPower.get(0);
+					world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
+					radiantExplosions.remove(pos);
+					explosionPower.remove(power);
+				}
+				if (!radiantExplosionsL.isEmpty() && !explosionPowerL.isEmpty()) {
+					BlockPos pos = radiantExplosionsL.get(0);
+					float power = explosionPowerL.get(0);
+					world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
+					radiantExplosionsL.remove(pos);
+					explosionPowerL.remove(power);
+				}
+				if (!cloudAreas.isEmpty() && !effectRadius.isEmpty()) {
+					BlockPos pos = cloudAreas.get(0);
+					float radius = effectRadius.get(0);
+					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
+	                entityareaeffectcloud.setOwner(null);
+	                entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
+	                entityareaeffectcloud.setRadius(radius);
+	                entityareaeffectcloud.setDuration(900);
+	//                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 1));
+	                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
+	                world.playEvent(2006, pos, 0);
+	                world.spawnEntity(entityareaeffectcloud);
+					cloudAreas.remove(pos);
+					effectRadius.remove(radius);
+				}
+				if (!cloudAreasL.isEmpty() && !effectRadiusL.isEmpty()) {
+					BlockPos pos = cloudAreasL.get(0);
+					float radius = effectRadiusL.get(0);
+					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
+	                entityareaeffectcloud.setOwner(null);
+	                entityareaeffectcloud.setParticle(EnumParticleTypes.SPELL_WITCH);
+	                entityareaeffectcloud.setRadius(radius);
+	                entityareaeffectcloud.setDuration(1800);
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 200, 6));
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
+	                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
+	                world.playEvent(2006, pos, 0);
+	                world.spawnEntity(entityareaeffectcloud);
+					cloudAreasL.remove(pos);
+					effectRadiusL.remove(radius);
+				}
+				if (!destructionPositions.isEmpty() && !destructionDetails.isEmpty()) {
+					BlockPos pos = destructionPositions.get(0);
+					ArrayList<Float> details = destructionDetails.get(0);
+					float bolts = details.get(2);
+					for (int i = 0; i < bolts; i++) {
+						EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+						bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						world.spawnEntity(bolt);
+						world.addWeatherEffect(bolt);
+					}
+					for (int i = 0; i < 3; i++) world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts/2, true);
+	                float power = details.get(1);
+	                world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
+					float radius = details.get(0);
+					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
+	                entityareaeffectcloud.setOwner(null);
+	                entityareaeffectcloud.setParticle(EnumParticleTypes.SPELL_WITCH);
+	                entityareaeffectcloud.setRadius(radius);
+	                entityareaeffectcloud.setDuration(2700);
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 150, 4));
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
+	                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
+	                world.playEvent(2006, pos, 0);
+	                world.spawnEntity(entityareaeffectcloud);
+	                destructionPositions.remove(pos);
+	                destructionDetails.remove(0);
+				}
+				if (!destructionPositionsL.isEmpty() && !destructionDetailsL.isEmpty()) {
+					BlockPos pos = destructionPositionsL.get(0);
+					ArrayList<Float> details = destructionDetailsL.get(0);
+					float bolts = details.get(2);
+					for (int i = 0; i < bolts; i++) {
+						EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+						bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+						world.spawnEntity(bolt);
+						world.addWeatherEffect(bolt);
+					}
+					for (int i = 0; i < 6; i++) world.createExplosion(null, pos.getX(), pos.getY()+2, pos.getZ(), (float) bolts/2, true);
+	                float power = details.get(1);
+	                world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), power, false, true);
+					float radius = details.get(0);
+					EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX(), pos.getY(), pos.getZ());
+	                entityareaeffectcloud.setOwner(null);
+	                entityareaeffectcloud.setParticle(EnumParticleTypes.REDSTONE);
+	                entityareaeffectcloud.setRadius(radius);
+	                entityareaeffectcloud.setDuration(2700);
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.WITHER, 300, 9));
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
+	                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
+	                world.playEvent(2006, pos, 0);
+	                world.spawnEntity(entityareaeffectcloud);
+	                destructionPositionsL.remove(pos);
+	                destructionDetailsL.remove(0);
+				}
+				int trigger = 0;
+				for (int i = 0; i < 2; i++) {
+					if (!sphereExplosionList.isEmpty()) {
+						for (int s = sphereExplosionList.size()-1; s >= 0; s--) {
+							SphereExplosion sphereExplosion = sphereExplosionList.get(s);
+							if (sphereExplosion.currentLayer <= sphereExplosion.radius) {
+								System.out.println(sphereExplosion.currentLayer);
+								SpherePoints points = new SpherePoints();
+								for (BlockPos pos : points.getPointsOnSphere(sphereExplosion.center, sphereExplosion.currentLayer)) {
+									if (world.getBlockState(pos) != Blocks.BEDROCK.getDefaultState()) {
+										world.setBlockToAir(pos);
+										if (sphereExplosion.currentLayer%2 == 0) {
+											if (sphereExplosion.currentLayer == sphereExplosion.radius) {
+												if (trigger%15 == 0) {
+													world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 20, true, true);
+													for (int l = 0; l < 2; l++) {
+														EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+														bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+														world.spawnEntity(bolt);
+														world.addWeatherEffect(bolt);
+													}
+												}
+											}
+											else if (sphereExplosion.currentLayer <= 4) {
+												if (trigger%7 == 0) world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), sphereExplosion.radius, true, true);
+												if (trigger%4 == 0) {
+													for (int l = 0; l < 2; l++) {
+														EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+														bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+														world.spawnEntity(bolt);
+														world.addWeatherEffect(bolt);
+													}
+												}
+											}
+											else {
+												if (trigger%12 == 0) world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3, true, false);
+												if (trigger%9 == 0) {
+													for (int l = 0; l < 2; l++) {
+														EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
+														bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
+														world.spawnEntity(bolt);
+														world.addWeatherEffect(bolt);
+													}
 												}
 											}
 										}
-										else if (sphereExplosion.currentLayer <= 4) {
-											if (trigger%7 == 0) world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), sphereExplosion.radius, true, true);
-											if (trigger%4 == 0) {
-												for (int l = 0; l < 2; l++) {
-													EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
-													bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
-													world.spawnEntity(bolt);
-													world.addWeatherEffect(bolt);
-												}
-											}
-										}
-										else {
-											if (trigger%12 == 0) world.newExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3, true, false);
-											if (trigger%9 == 0) {
-												for (int l = 0; l < 2; l++) {
-													EntityLightningBolt bolt = new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ(), false);
-													bolt.setPosition(pos.getX(), pos.getY(), pos.getZ());
-													world.spawnEntity(bolt);
-													world.addWeatherEffect(bolt);
-												}
-											}
-										}
+										trigger++;
 									}
-									trigger++;
 								}
+	//							world.newExplosion(null, sphereExplosion.center.getX(), sphereExplosion.center.getY(), sphereExplosion.center.getZ(), sphereExplosion.currentLayer, true, true);
+								sphereExplosion.currentLayer++;
 							}
-//							world.newExplosion(null, sphereExplosion.center.getX(), sphereExplosion.center.getY(), sphereExplosion.center.getZ(), sphereExplosion.currentLayer, true, true);
-							sphereExplosion.currentLayer++;
-						}
-						else {
-							sphereExplosionList.remove(sphereExplosion);
-							world.newExplosion(
-								null, sphereExplosion.center.getX(), sphereExplosion.center.getY(), sphereExplosion.center.getZ(), 
-								sphereExplosion.currentLayer, true, true
-							);
+							else {
+								sphereExplosionList.remove(sphereExplosion);
+								world.newExplosion(
+									null, sphereExplosion.center.getX(), sphereExplosion.center.getY(), sphereExplosion.center.getZ(), 
+									sphereExplosion.currentLayer, true, true
+								);
+							}
 						}
 					}
 				}
 			}
-//			}
-		}
+//		}
 	}
 //	@SubscribeEvent
 //	public void ItemUseTickEvents(LivingEntityUseItemEvent.Tick event) {
@@ -709,6 +771,23 @@ public class CustomEvents {
 //	}
 	
 	@SubscribeEvent
+	public void CustomClientTickEvents(ClientTickEvent event) 
+	{
+		if (event.phase == TickEvent.Phase.END) 
+		{
+			if (Main.keyBindSwitchDestructionSwordChargeMode.isKeyDown())
+			{
+				if (!keyBindSwitchDestructionSwordChargeModePressed)
+				{
+					keyBindSwitchDestructionSwordChargeModePressed = true;
+//					System.out.println("Key pressed");
+				}
+			}
+			else keyBindSwitchDestructionSwordChargeModePressed = false;
+		}
+	}
+	
+	@SubscribeEvent
 	public void PlayerCritEvents(CriticalHitEvent event) {
 		
 	}
@@ -722,7 +801,7 @@ public class CustomEvents {
 //		int i = 0;
 //		float k = 0;
 		for (ItemStack piece : armor) {
-			if (piece.getItem() instanceof CustomArmor) {
+			if (piece.getItem() instanceof RadiantArmor) {
 				player.resetCooldown();
 			}
 			else if (piece.getItem() instanceof GodArmor) {

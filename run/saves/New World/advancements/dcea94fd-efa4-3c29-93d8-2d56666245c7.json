@@ -1,0 +1,15 @@
+{
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-10-09 21:56:35 -0700"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-10-09 21:56:43 -0700",
+      "taiga": "2024-10-09 21:56:35 -0700"
+    },
+    "done": false
+  }
+}

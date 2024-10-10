@@ -6,7 +6,7 @@ import java.util.Random;
 
 import mymod.Main;
 import mymod.Enchantments.EnchantmentHeat;
-import mymod._01_ForgeYourSword.CustomMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
 import mymod._02_PowerOre.CustomOre;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
 import mymod._07_BuildAndBoom.EntityClusterGrenadeFragment;

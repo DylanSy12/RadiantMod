@@ -21,7 +21,7 @@ import mymod.CodakidFiles.RenderGrenadeRecursiveCluster;
 import mymod.CodakidFiles.RenderGrenadeWorldEnd;
 import mymod.CodakidFiles.RenderGrenadeWorldEnd.FactoryWEG;
 import mymod.CodakidFiles.RenderGrenadeRecursiveCluster.FactoryRCG;
-import mymod.CodakidFiles.RenderMonsterBiped;
+import mymod.CodakidFiles.RenderRadiantLord;
 import mymod.CodakidFiles.RenderNukeCustom;
 import mymod.CodakidFiles.RenderNukeCustom.FactoryN;
 import mymod.CodakidFiles.RenderWorldGrenadeBuild;
@@ -30,14 +30,14 @@ import mymod.CodakidFiles.RenderWorldGrenadeEraser;
 import mymod.CodakidFiles.RenderWorldGrenadeEraser.FactoryWERG;
 import mymod.CodakidFiles.RenderWorldGrenadeErasing;
 import mymod.CodakidFiles.RenderWorldGrenadeErasing.FactoryWGER;
-import mymod._01_ForgeYourSword.CustomMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
 import mymod._02_PowerOre.CustomWorldGen;
-import mymod._04_CreateACreature.DestructionMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
-import mymod._04_CreateACreature.RenderDestructionMonster;
-import mymod._04_CreateACreature.RenderGodMonster;
-import mymod._04_CreateACreature.RenderMysticalMonster;
+import mymod._04_CreateACreature.DestructionLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
+import mymod._04_CreateACreature.RenderDestructionLord;
+import mymod._04_CreateACreature.RenderGodLord;
+import mymod._04_CreateACreature.RenderMysticalLord;
 import mymod._05_LuckyBlock.EntityNuke;
 import mymod._07_BuildAndBoom.CustomExplosion;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
@@ -54,6 +54,7 @@ import mymod._07_BuildAndBoom.EntityWorldEndGrenade;
 import mymod._07_BuildAndBoom.EntityWorldEraserGrenade;
 import mymod._07_BuildAndBoom.EntityWorldErasingGrenade;
 import net.minecraft.block.Block;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -63,6 +64,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -185,15 +187,15 @@ public class CommonProxy {
     	
     	
     	//************* REGISTER MOBS ***************
-    	Codakid.registerMobEntity(CustomMonster.class, "my_monster", RenderMonsterBiped.FACTORY, Color.RED.getRGB(), Color.YELLOW.getRGB());
-    	EntityRegistry.addSpawn(CustomMonster.class, 50, 1, 2, EnumCreatureType.CREATURE, Biomes.MESA, Biomes.DESERT, Biomes.SAVANNA, Biomes.DEFAULT, Main.radiantBiome, Main.luckyBiome);
-    	Codakid.registerMobEntity(GodMonster.class, "god_monster", RenderGodMonster.FACTORY, Color.WHITE.getRGB(), Color.YELLOW.getRGB());
-    	EntityRegistry.addSpawn(GodMonster.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.ICE_MOUNTAINS, Biomes.DESERT, Biomes.EXTREME_HILLS, Biomes.DEFAULT, Main.godBiome, Main.luckyBiome);
-    	Codakid.registerMobEntity(MysticalMonster.class, "mystical_monster", RenderMysticalMonster.FACTORY, Color.BLUE.getRGB(), Color.MAGENTA.getRGB());
-    	EntityRegistry.addSpawn(MysticalMonster.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.ICE_MOUNTAINS, Biomes.FROZEN_OCEAN, Biomes.TAIGA, Biomes.ICE_PLAINS, Biomes.COLD_TAIGA, Biomes.DEFAULT, Main.mysticalBiome, Main.luckyBiome);
+    	Codakid.registerMobEntity(RadiantLord.class, "my_monster", RenderRadiantLord.FACTORY, Color.RED.getRGB(), Color.YELLOW.getRGB());
+    	EntityRegistry.addSpawn(RadiantLord.class, 50, 1, 2, EnumCreatureType.CREATURE, Biomes.MESA, Biomes.DESERT, Biomes.SAVANNA, Biomes.DEFAULT, Main.radiantBiome, Main.luckyBiome);
+    	Codakid.registerMobEntity(GodLord.class, "god_monster", RenderGodLord.FACTORY, Color.WHITE.getRGB(), Color.YELLOW.getRGB());
+    	EntityRegistry.addSpawn(GodLord.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.ICE_MOUNTAINS, Biomes.DESERT, Biomes.EXTREME_HILLS, Biomes.DEFAULT, Main.godBiome, Main.luckyBiome);
+    	Codakid.registerMobEntity(MysticalLord.class, "mystical_monster", RenderMysticalLord.FACTORY, Color.BLUE.getRGB(), Color.MAGENTA.getRGB());
+    	EntityRegistry.addSpawn(MysticalLord.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.ICE_MOUNTAINS, Biomes.FROZEN_OCEAN, Biomes.TAIGA, Biomes.ICE_PLAINS, Biomes.COLD_TAIGA, Biomes.DEFAULT, Main.mysticalBiome, Main.luckyBiome);
     	Color darkred = new Color(51,0,9);
-    	Codakid.registerMobEntity(DestructionMonster.class, "destruction_monster", RenderDestructionMonster.FACTORY, Color.BLACK.getRGB(), darkred.getRGB());
-    	EntityRegistry.addSpawn(DestructionMonster.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.DEFAULT, Main.luckyBiome);
+    	Codakid.registerMobEntity(DestructionLord.class, "destruction_monster", RenderDestructionLord.FACTORY, Color.BLACK.getRGB(), darkred.getRGB());
+    	EntityRegistry.addSpawn(DestructionLord.class, 50, 1, 1, EnumCreatureType.CREATURE, Biomes.DEFAULT, Main.luckyBiome);
     	
     	
     	
@@ -291,6 +293,8 @@ public class CommonProxy {
 //    	BiomeManager.addSpawnBiome(Main.luckyBiome);
     	BiomeManager.removeSpawnBiome(Main.luckyBiome);
     	
+    	//************* REGISTER CUSTOM KEYBINDS ***************
+    	ClientRegistry.registerKeyBinding(Main.keyBindSwitchDestructionSwordChargeMode);
     }
     
 

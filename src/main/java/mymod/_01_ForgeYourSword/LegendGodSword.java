@@ -44,10 +44,15 @@ public class LegendGodSword extends ItemSword
 	// Ability information NBT tags
 	private static NBTTagCompound customTags = new NBTTagCompound();
 	static {
-		customTags.setInteger("charge", 3);
-		customTags.setInteger("charge_increment", 3);
-		customTags.setInteger("min_charge", 3);
-		customTags.setInteger("max_charge", 30);
+//		customTags.setInteger("charge", 3);
+//		customTags.setInteger("charge_increment", 3);
+//		customTags.setInteger("min_charge", 3);
+//		customTags.setInteger("max_charge", 30);
+		customTags.setInteger("charge", 0);
+		customTags.setInteger("charge_increment", 1);
+		customTags.setInteger("min_charge", 0);
+		customTags.setInteger("max_charge", 20);
+		customTags.setInteger("bolt_increment", 2);
 		customTags.setInteger("cooldown_time", 50);
 		customTags.setInteger("max_usage_time", 80);
 		customTags.setFloat("radius_increment", 0.5f);
@@ -174,7 +179,7 @@ public class LegendGodSword extends ItemSword
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
 					CustomEvents.lightningStrikesL.add(pos);
-					CustomEvents.numBoltsL.add(c);
+					CustomEvents.numBoltsL.add(c*nbt.getInteger("bolt_increment"));
 				}
 				else 
 				{
@@ -183,7 +188,7 @@ public class LegendGodSword extends ItemSword
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
 						CustomEvents.lightningStrikesL.add(pos);
-						CustomEvents.numBoltsL.add(c);
+						CustomEvents.numBoltsL.add(c*nbt.getInteger("bolt_increment"));
 					}
 				}
 				
@@ -242,7 +247,7 @@ public class LegendGodSword extends ItemSword
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
 					CustomEvents.lightningStrikesL.add(pos);
-					CustomEvents.numBoltsL.add(c);
+					CustomEvents.numBoltsL.add(c*nbt.getInteger("bolt_increment"));
 				}
 				else 
 				{
@@ -251,7 +256,7 @@ public class LegendGodSword extends ItemSword
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
 						CustomEvents.lightningStrikesL.add(pos);
-						CustomEvents.numBoltsL.add(c);
+						CustomEvents.numBoltsL.add(c*nbt.getInteger("bolt_increment"));
 					}
 				}
 				
@@ -287,6 +292,7 @@ public class LegendGodSword extends ItemSword
     	NBTTagCompound nbt = item.getTagCompound();
     	float range = nbt.getInteger("min_radius")+(Minecraft.getMinecraft().player.getItemInUseMaxCount()*nbt.getFloat("radius_increment"));
     	float maxRange = nbt.getInteger("min_radius")+(nbt.getInteger("max_usage_time")*nbt.getFloat("radius_increment"));
-    	return displayName+" | Bolts: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+//    	return displayName+" | Bolts: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+    	return displayName+" | Ability Charge: "+(nbt.getInteger("charge")*5)+"% | Range: "+range+"/"+maxRange;
     }
 }

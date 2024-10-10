@@ -41,9 +41,9 @@ import scala.tools.nsc.symtab.classfile.ICodeReader;
 import net.minecraftforge.fml.client.registry.*;
 import mymod.Main;
 import mymod.CodakidFiles.Codakid;
-import mymod._01_ForgeYourSword.CustomMonster;
-import mymod._04_CreateACreature.GodMonster;
-import mymod._04_CreateACreature.MysticalMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
+import mymod._04_CreateACreature.GodLord;
+import mymod._04_CreateACreature.MysticalLord;
 import mymod._07_BuildAndBoom.EntityBuildGrenade;
 import mymod._07_BuildAndBoom.EntityClusterGrenade;
 import mymod._07_BuildAndBoom.EntityEraserGrenade;
@@ -615,21 +615,21 @@ public class LuckyBlock extends Block {
 		}
 		else if(number <= 255)
 		{
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 260)
 		{
-			Codakid.spawnEntity(world, pos, new CustomMonster(world));
+			Codakid.spawnEntity(world, pos, new RadiantLord(world));
 		}
 		else if(number <= 265)
 		{
-			Codakid.spawnEntity(world, pos, new MysticalMonster(world));
+			Codakid.spawnEntity(world, pos, new MysticalLord(world));
 		}
 		else if(number <= 270)
 		{
-			Codakid.spawnEntity(world, pos, new GodMonster(world));
+			Codakid.spawnEntity(world, pos, new GodLord(world));
 		}
 		else if(number <=274)
 		{

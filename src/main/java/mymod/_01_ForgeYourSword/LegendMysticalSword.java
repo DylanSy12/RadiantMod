@@ -9,7 +9,7 @@ import org.lwjgl.input.Mouse;
 
 import mymod.CustomEvents;
 import mymod.Main;
-import mymod._03_MagicArmor.CustomArmor;
+import mymod._03_MagicArmor.RadiantArmor;
 import mymod._03_MagicArmor.DestructionArmor;
 import mymod._03_MagicArmor.GodArmor;
 import mymod._03_MagicArmor.MysticalArmor;
@@ -46,10 +46,15 @@ public class LegendMysticalSword extends ItemSword
 	// Ability information NBT tags
 	private static NBTTagCompound customTags = new NBTTagCompound();
 	static {
-		customTags.setInteger("charge", 3);
-		customTags.setInteger("charge_increment", 3);
-		customTags.setInteger("min_charge", 3);
-		customTags.setInteger("max_charge", 27);
+//		customTags.setInteger("charge", 3);
+//		customTags.setInteger("charge_increment", 3);
+//		customTags.setInteger("min_charge", 3);
+//		customTags.setInteger("max_charge", 27);
+		customTags.setInteger("charge", 0);
+		customTags.setInteger("charge_increment", 1);
+		customTags.setInteger("min_charge", 0);
+		customTags.setInteger("max_charge", 20);
+		customTags.setFloat("cloud_increment", 1);
 		customTags.setInteger("cooldown_time", 120);
 		customTags.setInteger("max_usage_time", 80);
 		customTags.setFloat("radius_increment", 0.5f);
@@ -75,7 +80,7 @@ public class LegendMysticalSword extends ItemSword
 		
     	for (ItemStack armor : playerIn.getArmorInventoryList()) 
     	{
-    		if (armor.getItem() instanceof MysticalArmor || armor.getItem() instanceof CustomArmor || 
+    		if (armor.getItem() instanceof MysticalArmor || armor.getItem() instanceof RadiantArmor || 
 				armor.getItem() instanceof GodArmor || armor.getItem() instanceof DestructionArmor) 
 			{
 				armorPieces += 1;
@@ -177,7 +182,7 @@ public class LegendMysticalSword extends ItemSword
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
 					CustomEvents.cloudAreasL.add(pos);
-					CustomEvents.effectRadiusL.add((float) c);
+					CustomEvents.effectRadiusL.add(c*nbt.getFloat("cloud_increment"));
 				}
 				else 
 				{
@@ -186,7 +191,7 @@ public class LegendMysticalSword extends ItemSword
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
 						CustomEvents.cloudAreasL.add(pos);
-						CustomEvents.effectRadiusL.add((float) c);
+						CustomEvents.effectRadiusL.add(c*nbt.getFloat("cloud_increment"));
 					}
 				}
 				
@@ -245,7 +250,7 @@ public class LegendMysticalSword extends ItemSword
 					BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 					
 					CustomEvents.cloudAreasL.add(pos);
-					CustomEvents.effectRadiusL.add((float) c);
+					CustomEvents.effectRadiusL.add(c*nbt.getFloat("cloud_increment"));
 				}
 				else 
 				{
@@ -254,7 +259,7 @@ public class LegendMysticalSword extends ItemSword
 						BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
 						
 						CustomEvents.cloudAreasL.add(pos);
-						CustomEvents.effectRadiusL.add((float) c);
+						CustomEvents.effectRadiusL.add(c*nbt.getFloat("cloud_increment"));
 					}
 				}
 				
@@ -290,6 +295,7 @@ public class LegendMysticalSword extends ItemSword
     	NBTTagCompound nbt = item.getTagCompound();
     	float range = nbt.getInteger("min_radius")+(Minecraft.getMinecraft().player.getItemInUseMaxCount()*nbt.getFloat("radius_increment"));
     	float maxRange = nbt.getInteger("min_radius")+(nbt.getInteger("max_usage_time")*nbt.getFloat("radius_increment"));
-    	return displayName+" | Effect Cloud Radius: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+//    	return displayName+" | Effect Cloud Radius: "+nbt.getInteger("charge")+"/"+nbt.getInteger("max_charge")+" | Range: "+range+"/"+maxRange;
+    	return displayName+" | Ability Charge: "+(nbt.getInteger("charge")*5)+"% | Range: "+range+"/"+maxRange;
     }
 }

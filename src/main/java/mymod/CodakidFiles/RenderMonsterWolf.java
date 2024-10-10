@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mymod.Main;
-import mymod._01_ForgeYourSword.CustomMonster;
+import mymod._01_ForgeYourSword.RadiantLord;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -28,33 +28,33 @@ public class RenderMonsterWolf extends RenderLiving {
 	}
 	
 
-	public void func_177_a(CustomMonster entity, double d, double d1, double d2,
+	public void func_177_a(RadiantLord entity, double d, double d1, double d2,
 			float f, float f1) {
 		super.doRender(entity, d, d1, d2, f, f1);
 	}
 
 	public void doRenderLiving(EntityLiving entityliving, double d, double d1,
 			double d2, float f, float f1) {
-		func_177_a((CustomMonster) entityliving, d, d1, d2, f, f1);
+		func_177_a((RadiantLord) entityliving, d, d1, d2, f, f1);
 	}
 
 	public void doRender(Entity entity, double d, double d1, double d2,
 			float f, float f1) {
-		func_177_a((CustomMonster) entity, d, d1, d2, f, f1);
+		func_177_a((RadiantLord) entity, d, d1, d2, f, f1);
 	}
 
-	protected ResourceLocation func_110872_a(CustomMonster par1Entity) {
+	protected ResourceLocation func_110872_a(RadiantLord par1Entity) {
 		return wolfTexture;
 	}
 
 	protected ResourceLocation getEntityTexture(Entity var1) {
-		return func_110872_a((CustomMonster) var1);
+		return func_110872_a((RadiantLord) var1);
 	}
 	
-	public static class Factory implements IRenderFactory<CustomMonster> {
+	public static class Factory implements IRenderFactory<RadiantLord> {
 
         @Override
-        public Render<? super CustomMonster> createRenderFor(RenderManager manager) {
+        public Render<? super RadiantLord> createRenderFor(RenderManager manager) {
             return new RenderMonsterWolf(manager);
         }
 

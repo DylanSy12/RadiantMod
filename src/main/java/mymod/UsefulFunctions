@@ -43,3 +43,48 @@ public int getItemStackLimit(ItemStack stack)
 (Use to set the max stack limit for guns and launchers to 1)
 
 player.setAbsorbtionAmount
+
+player.getEntityAttribute(EntityPlayer.REACH_DISTANCE)
+
+//	@Override
+//	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn){
+//		if (!worldIn.isRemote) {
+//			this.time2=System.currentTimeMillis();
+//			if (time2-time1>=this.cooldownTime || player.capabilities.isCreativeMode) {
+//				int pieces=0;
+//				for (ItemStack armor:player.getArmorInventoryList()) {
+//					if (armor.getItem() instanceof CustomArmor || armor.getItem() instanceof DestructionArmor) {
+//						pieces+=1;
+//					}
+//				}
+//				if (pieces==4 || player.capabilities.isCreativeMode) {
+//					for (int i=1;i<=1;i++) {
+//						EntityLargeFireball entityFireball = new EntityLargeFireball(worldIn, player, 6F, 6F, 6F);
+//						entityFireball.explosionPower=(int)this.power;
+//						Vec3d looking = entityFireball.getLookVec();
+//			            if (looking != null) {
+//			            	entityFireball.motionX = looking.x*i;
+//			            	entityFireball.motionY = looking.y*i;
+//			            	entityFireball.motionZ = looking.z*i;
+//			            	entityFireball.accelerationX = entityFireball.motionX * 0.1D;
+//			            	entityFireball.accelerationY = entityFireball.motionY * 0.1D;
+//			            	entityFireball.accelerationZ = entityFireball.motionZ * 0.1D;
+//			            }
+//			            worldIn.spawnEntity(entityFireball);
+//					}
+//				}
+//				if (player.capabilities.isCreativeMode && this.power>9) this.power-=9;
+//				else this.power=9;
+//				this.time1=System.currentTimeMillis();
+//			}
+//			else {
+//				int cooldown=(int)(this.cooldownTime-(this.time2-this.time1))/1000;
+//				if (cooldown!=this.prevCooldown) {
+//					ITextComponent text = (ITextComponent) new TextComponentString("Ability in Cooldown: "+(cooldown+1)+" Seconds Left");
+//					player.sendMessage(text);
+//					this.prevCooldown=cooldown;
+//				}
+//			}
+//		}
+//		return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(handIn));
+//	}

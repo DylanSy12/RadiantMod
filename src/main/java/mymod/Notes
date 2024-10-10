@@ -4,4 +4,11 @@ MM: Hit: ID1|1/P100|2, Tick: ID1|2/P200/6
 
 Sword:
 MS: ID1|1
-LMS: ID1|3/P300|9
+LMS: ID1|2/P200|6
+
+sword->legendary: 2x
+->destruction: 1.5x
+
+MS: 0.5x, cap 10
+RS: 4x, cap 80
+GS: 1x, cap 20
