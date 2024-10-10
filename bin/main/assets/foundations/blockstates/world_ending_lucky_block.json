@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "foundations:world_ending_lucky_block" }
+    }
+}

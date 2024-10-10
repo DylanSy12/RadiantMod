@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rtr",
+    "tgt",
+    "rtr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:god_ingot"
+     },
+    "t": {
+      "item": "minecraft:tnt"
+     },
+    "g": { 
+      "item": "foundations:my_cluster_grenade"
+     }
+  },
+  "result": {
+    "item": "foundations:recursive_cluster_grenade"
+  }
+}

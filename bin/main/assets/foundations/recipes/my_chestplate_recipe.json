@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "r r",
+    "rnr",
+    "rdr"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:my_ingot"
+     },
+    "n": {
+      "item": "minecraft:nether_star"
+     },
+    "d": {
+      "item": "minecraft:diamond"
+     }
+  },
+  "result": {
+    "item": "foundations:my_chestplate"
+  }
+}

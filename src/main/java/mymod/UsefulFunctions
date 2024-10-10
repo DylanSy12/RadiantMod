@@ -1,0 +1,45 @@
+Class: Item
+/**
+ * Determines if this Item has a special entity for when they are in the world.
+ * Is called when a EntityItem is spawned in the world, if true and Item#createCustomEntity
+ * returns non null, the EntityItem will be destroyed and the new Entity will be added to the world.
+ *
+ * @param stack The current item stack
+ * @return True of the item has a custom entity, If true, Item#createCustomEntity will be called
+ */
+public boolean hasCustomEntity(ItemStack stack)
+{
+    return false;
+}
+(Maybe use to make items blast and fire resistant)
+
+Class: Item
+/**
+ * Returns the font renderer used to render tooltips and overlays for this item.
+ * Returning null will use the standard font renderer.
+ *
+ * @param stack The current item stack
+ * @return A instance of FontRenderer or null to use default
+ */
+@SideOnly(Side.CLIENT)
+@Nullable
+public net.minecraft.client.gui.FontRenderer getFontRenderer(ItemStack stack)
+{
+    return null;
+}
+
+Class: Item
+/**
+ * Gets the maximum number of items that this stack should be able to hold.
+ * This is a ItemStack (and thus NBT) sensitive version of Item.getItemStackLimit()
+ *
+ * @param stack The ItemStack
+ * @return The maximum number this item can be stacked to
+ */
+public int getItemStackLimit(ItemStack stack)
+{
+    return this.getItemStackLimit();
+}
+(Use to set the max stack limit for guns and launchers to 1)
+
+player.setAbsorbtionAmount

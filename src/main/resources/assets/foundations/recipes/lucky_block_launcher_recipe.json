@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rvl",
+    "dnu",
+    "bdr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:god_ingot"
+     },
+    "b": { 
+      "item": "foundations:my_ingot"
+     },
+    "d": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:beacon"
+     },
+    "v": {
+      "item": "foundations:god_lucky_block"
+     },
+    "l": {
+      "item": "foundations:lucky_block"
+     },
+    "u": {
+      "item": "foundations:mystical_lucky_block"
+     }
+  },
+  "result": {
+    "item": "foundations:lucky_block_launcher"
+  }
+}

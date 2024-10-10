@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "d d",
+    "r r"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+     },
+    "r": {
+      "item": "foundations:my_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:my_boots"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "r r",
+    "rnr",
+    "rdr"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:diamond"
+     },
+    "d": {
+      "item": "minecraft:dye",
+      "data": 4
+     }
+  },
+  "result": {
+    "item": "foundations:mystical_chestplate"
+  }
+}

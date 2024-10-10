@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rrr",
+    "rsr",
+    "rrr"
+  ],
+  "key": {
+    "s": {
+      "item": "foundations:mystical_lucky_block"
+     },
+    "r": {
+      "item": "foundations:my_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:lucky_block"
+  }
+}

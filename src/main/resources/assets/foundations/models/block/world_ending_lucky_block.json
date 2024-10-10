@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "foundations:blocks/world_ending_lucky_block"
+    }
+}

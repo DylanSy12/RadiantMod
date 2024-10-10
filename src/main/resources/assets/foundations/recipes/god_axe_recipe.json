@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "drr",
+    "nbr",
+    " bd"
+  ],
+  "key": {
+    "b": {
+      "item": "foundations:my_ingot"
+     },
+    "r": {
+      "item": "foundations:god_ingot"
+     },
+    "d": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:beacon"
+     }
+  },
+  "result": {
+    "item": "foundations:god_axe"
+  }
+}

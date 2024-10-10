@@ -1,0 +1,25 @@
+Add a magic protection enchant (reduces damage from instant damage, wither, fire, and poison)
+Fix infinite looting/sweeping edge enchants on Radiant and Destruction swords
+Change Levitation gun into a Dragon fireball gun
+Make some of the lords lifesteal
+Fix health boost overwrite from god potion orb
+Add other potion orbs
+Change particles for effect clouds for destruction/mystical lords
+Shield and Repulsion should only go on chestplates
+Redo shield enchant so it just negates instances of damage, instead of retroactively restoring health
+Add a Health boost enchant
+Add a True strike enchant (instant damage/true damage/subtract from health)
+Make right click effects for full sets of armor
+More descriptive Item Tooltips
+Change the code so that it does the damage events for the lord monsters within each class, instead of CustomEvents
+Simplify extra health code for the Destruction Lord
+Make tools have abilities
+Make sword abilities use item cooldowns (Destruction/God/Mystical are done)
+Make boss bars for lord monsters
+Make ability charge progress like durability bar
+Make radius of sword abilities increase when right click is held (maybe)
+Change Radiant sword ability to be a weaker version of the Destruction sword's ability
+Change Destruction sword's ability to be a combination of the other three
+Add better comments for functions
+Change sword charge variables into nbt
+Check to make sure ability charging is working properly

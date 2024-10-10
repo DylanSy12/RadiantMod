@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "foundations:mystical_block"
+        }
+    ],
+    "result": {
+        "item": "foundations:mystical_ingot",
+        "count": 9
+    }
+}

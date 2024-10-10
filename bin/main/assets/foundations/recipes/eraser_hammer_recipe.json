@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nen",
+    "rdr",
+    " b "
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:god_ingot"
+     },
+    "b": { 
+      "item": "foundations:my_ingot"
+     },
+    "d": {
+      "item": "minecraft:beacon"
+     },
+    "n": {
+      "item": "foundations:mystical_ingot"
+     },
+    "e": {
+      "item": "foundations:god_eraser_grenade"
+     }
+  },
+  "result": {
+    "item": "foundations:eraser_hammer"
+  }
+}

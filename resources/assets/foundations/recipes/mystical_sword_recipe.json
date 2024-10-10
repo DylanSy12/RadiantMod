@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ngm",
+    "gmg",
+    "hgn"
+  ],
+  "key": {
+    "m": { 
+      "item": "foundations:mystical_ingot"
+     },
+    "h": { 
+      "item": "minecraft:obsidian"
+     },
+    "g": {
+      "item": "minecraft:dye",
+      "data": 4
+     },
+    "n": {
+      "item": "minecraft:diamond"
+     }
+  },
+  "result": {
+    "item": "foundations:mystical_sword"
+  }
+}

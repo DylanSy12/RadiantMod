@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "name": "foundations:mystical_monster",
+      "rolls": 5,
+      "entries": [
+        {
+          "type": "item",
+          "name": "foundations:mystical_ingot",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "foundations:mystical_block",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "foundations:mystical_lucky_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rgr",
+    "gtg",
+    "rgr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:god_ingot"
+     },
+    "t": { 
+      "item": "minecraft:tnt"
+     },
+    "g": { 
+      "item": "foundations:my_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:god_eraser_grenade"
+  }
+}

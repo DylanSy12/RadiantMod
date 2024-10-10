@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nrt",
+    "dtr",
+    "bdn"
+  ],
+  "key": {
+    "d": { 
+      "item": "minecraft:diamond"
+     },
+    "b": { 
+      "item": "minecraft:obsidian"
+     },
+    "r": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:dye",
+      "data": 4
+     },
+    "t": {
+      "item": "minecraft:shulker_shell"
+     }
+  },
+  "result": {
+    "item": "foundations:levitation_gun"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "r r",
+    "rnr",
+    "rdr"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:god_ingot"
+     },
+    "n": {
+      "item": "minecraft:beacon"
+     },
+    "d": {
+      "item": "foundations:my_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:god_chestplate"
+  }
+}

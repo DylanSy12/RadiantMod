@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "d d",
+    "r r"
+  ],
+  "key": {
+    "d": {
+      "item": "foundations:my_ingot"
+     },
+    "r": {
+      "item": "foundations:god_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:god_boots"
+  }
+}

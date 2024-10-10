@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rdr",
+    "r r",
+    "r r"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:mystical_ingot"
+     },
+    "d": {
+      "item": "minecraft:dye",
+      "data": 4
+     }
+  },
+  "result": {
+    "item": "foundations:mystical_leggings"
+  }
+}

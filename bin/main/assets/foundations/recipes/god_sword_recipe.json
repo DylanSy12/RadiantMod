@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ngm",
+    "gmg",
+    "hgn"
+  ],
+  "key": {
+    "m": { 
+      "item": "foundations:god_ingot"
+     },
+    "h": { 
+      "item": "foundations:my_ingot"
+     },
+    "g": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:beacon"
+     }
+  },
+  "result": {
+    "item": "foundations:god_sword"
+  }
+}

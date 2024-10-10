@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "trt",
+    "rnr",
+    "trt"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:my_ingot"
+     },
+    "t": { 
+      "item": "minecraft:tnt"
+     },
+    "n": { 
+      "item": "minecraft:nether_star"
+     }
+  },
+  "result": {
+    "item": "foundations:my_nuke"
+  }
+}

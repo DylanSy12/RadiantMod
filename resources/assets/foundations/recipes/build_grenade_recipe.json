@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "trt",
+    "rtr",
+    "trt"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:my_ingot"
+     },
+    "t": { 
+      "item": "minecraft:tnt"
+     }
+  },
+  "result": {
+    "item": "foundations:my_build_grenade"
+  }
+}

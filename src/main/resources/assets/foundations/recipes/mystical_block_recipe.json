@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rrr",
+    "rrr",
+    "rrr"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:mystical_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:mystical_block"
+  }
+}
