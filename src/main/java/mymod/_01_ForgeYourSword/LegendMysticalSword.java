@@ -49,8 +49,8 @@ public class LegendMysticalSword extends ItemSword
 		customTags.setInteger("charge", 3);
 		customTags.setInteger("charge_increment", 3);
 		customTags.setInteger("min_charge", 3);
-		customTags.setInteger("max_charge", 30);
-		customTags.setInteger("cooldown_time", 50);
+		customTags.setInteger("max_charge", 27);
+		customTags.setInteger("cooldown_time", 120);
 		customTags.setInteger("max_usage_time", 80);
 		customTags.setFloat("radius_increment", 0.5f);
 		customTags.setInteger("min_radius", 20);

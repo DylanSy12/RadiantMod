@@ -311,6 +311,7 @@ public class CustomEvents {
 	                entityareaeffectcloud.setRadius(radius);
 	                entityareaeffectcloud.setDuration(100);
 	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 1));
+	                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 100, 2));
 	                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
 	                world.playEvent(2006, pos, 0);
 	                world.spawnEntity(entityareaeffectcloud);
@@ -409,8 +410,8 @@ public class CustomEvents {
 			                entityareaeffectcloud.setRadius(radius);
 			                entityareaeffectcloud.setDuration(200);
 			                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
-			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.WITHER, 300, 10));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.WITHER, 300, 9));
 			                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			                world.playEvent(2006, pos, 0);
 			                world.spawnEntity(entityareaeffectcloud);
@@ -503,7 +504,8 @@ public class CustomEvents {
 			                entityareaeffectcloud.setRadius(radius);
 			                entityareaeffectcloud.setDuration(150);
 			                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
-			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 1));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 2));
+			                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 200, 6));
 			                entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			                world.playEvent(2006, pos, 0);
 			                world.spawnEntity(entityareaeffectcloud);
@@ -568,7 +570,7 @@ public class CustomEvents {
                 entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
                 entityareaeffectcloud.setRadius(radius);
                 entityareaeffectcloud.setDuration(600);
-                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
+//                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
                 entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 1));
                 entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
                 world.playEvent(2006, pos, 0);
@@ -584,8 +586,9 @@ public class CustomEvents {
                 entityareaeffectcloud.setParticle(EnumParticleTypes.DRAGON_BREATH);
                 entityareaeffectcloud.setRadius(radius);
                 entityareaeffectcloud.setDuration(1800);
-                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
+//                entityareaeffectcloud.setRadiusPerTick((7.0F-entityareaeffectcloud.getRadius())/(float)entityareaeffectcloud.getDuration());
                 entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 3));
+                entityareaeffectcloud.addEffect(new PotionEffect(MobEffects.POISON, 300, 9));
                 entityareaeffectcloud.setPosition(pos.getX(), pos.getY(), pos.getZ());
                 world.playEvent(2006, pos, 0);
                 world.spawnEntity(entityareaeffectcloud);

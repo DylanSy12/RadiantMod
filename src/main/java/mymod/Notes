@@ -1,0 +1,7 @@
+Monster:
+DM: Hit: ID1|2/W150|3, Tick: ID1|3/W300|9
+MM: Hit: ID1|1/P100|2, Tick: ID1|2/P200/6
+
+Sword:
+MS: ID1|1
+LMS: ID1|3/P300|9
