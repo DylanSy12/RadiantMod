@@ -48,7 +48,7 @@ public class LegendMysticalSword1 extends ItemSword {
 	private int prevCooldown;
 	private int cooldownTime;
 	public LegendMysticalSword1() {
-		super(Main.myToolMaterial22);
+		super(Main.legendMysticalSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.time1=System.currentTimeMillis()-3750;
 		this.range=600;

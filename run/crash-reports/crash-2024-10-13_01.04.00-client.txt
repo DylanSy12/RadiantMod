@@ -1,0 +1,118 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 10/13/24 1:04 AM
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at mymod._09_EpicWeapons.MysticalPortalSword.onItemRightClick(MysticalPortalSword.java:52)
+	at net.minecraft.item.ItemStack.useItemRightClick(ItemStack.java:217)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClick(PlayerControllerMP.java:511)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1597)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2254)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2020)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1808)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1098)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.legacydev.Main.start(Main.java:86)
+	at net.minecraftforge.legacydev.MainClient.main(MainClient.java:29)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at mymod._09_EpicWeapons.MysticalPortalSword.onItemRightClick(MysticalPortalSword.java:52)
+	at net.minecraft.item.ItemStack.useItemRightClick(ItemStack.java:217)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClick(PlayerControllerMP.java:511)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1597)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2254)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2020)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player386'/216, l='MpServer', x=1258.40, y=83.79, z=604.03]]
+	Chunk stats: MultiplayerChunkCache: 1089, 1089
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (1260,65,581), Chunk: (at 12,4,5 in 78,36; contains blocks 1248,0,576 to 1263,255,591), Region: (2,1; contains chunks 64,32 to 95,63, blocks 1024,0,512 to 1535,255,1023)
+	Level time: 446924 game time, 39386 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: true), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 141 total; [MysticalLord['The Mystical Lord'/282630, l='MpServer', x=1313.30, y=23.00, z=586.50], MysticalLord['The Mystical Lord'/282631, l='MpServer', x=1247.50, y=12.00, z=595.50], MysticalLord['The Mystical Lord'/282627, l='MpServer', x=1207.50, y=34.00, z=544.50], EntityBat['Bat'/281613, l='MpServer', x=1333.75, y=21.10, z=550.75], EntityZombie['Zombie'/280084, l='MpServer', x=1300.70, y=14.00, z=572.35], EntityZombie['Zombie'/281108, l='MpServer', x=1314.70, y=15.00, z=535.30], GodLord['The God Lord'/282644, l='MpServer', x=1239.50, y=7.00, z=651.50], EntityZombie['Zombie'/281109, l='MpServer', x=1306.50, y=18.00, z=543.50], MysticalLord['The Mystical Lord'/282646, l='MpServer', x=1204.30, y=49.00, z=564.61], EntityCreeper['Creeper'/281112, l='MpServer', x=1305.40, y=3.14, z=635.71], EntityCreeper['Creeper'/281635, l='MpServer', x=1201.30, y=40.00, z=628.79], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/282173, l='MpServer', x=1287.00, y=65.00, z=613.00], EntityBat['Bat'/283206, l='MpServer', x=1224.45, y=24.10, z=585.25], EntityItem['item.item.rottenFlesh'/282176, l='MpServer', x=1280.13, y=17.00, z=562.67], EntityBat['Bat'/283211, l='MpServer', x=1332.25, y=46.06, z=671.44], EntityBat['Bat'/283222, l='MpServer', x=1331.75, y=24.11, z=660.49], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/281682, l='MpServer', x=1287.00, y=74.00, z=602.00], EntitySkeleton['Skeleton'/279635, l='MpServer', x=1313.70, y=24.00, z=678.70], EntityItem['item.tile.dirt.default'/282717, l='MpServer', x=1226.44, y=2.00, z=642.94], EntityItem['item.item.rottenFlesh'/282206, l='MpServer', x=1204.88, y=52.00, z=628.62], EntityItem['item.tile.stonebrick'/282229, l='MpServer', x=1212.85, y=41.00, z=587.08], EntityZombie['Zombie'/280179, l='MpServer', x=1329.70, y=42.00, z=537.01], MysticalLord['The Mystical Lord'/283262, l='MpServer', x=1210.50, y=60.00, z=659.50], EntityItem['item.item.snowball'/282239, l='MpServer', x=1217.13, y=62.00, z=657.01], EntityItem['item.item.snowball'/282233, l='MpServer', x=1238.17, y=13.00, z=602.54], EntityItem['item.tile.stonebrick'/282745, l='MpServer', x=1253.15, y=4.00, z=637.18], EntityItem['item.item.rottenFlesh'/283268, l='MpServer', x=1212.02, y=9.00, z=627.71], EntityItem['item.tile.stonebrick'/282757, l='MpServer', x=1255.97, y=5.00, z=635.44], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283265, l='MpServer', x=1308.00, y=63.00, z=684.00], EntityItem['item.tile.stonebrick'/282242, l='MpServer', x=1220.79, y=60.00, z=664.26], EntityItem['item.tile.stone.granite'/282243, l='MpServer', x=1241.83, y=52.00, z=667.46], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283279, l='MpServer', x=1215.00, y=29.00, z=537.00], EntityItem['item.tile.stonebrick'/282760, l='MpServer', x=1254.53, y=8.00, z=641.99], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283284, l='MpServer', x=1311.00, y=18.00, z=586.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283285, l='MpServer', x=1254.00, y=16.00, z=600.00], EntityItem['item.item.snowball'/282774, l='MpServer', x=1242.88, y=3.00, z=665.23], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283286, l='MpServer', x=1247.00, y=11.00, z=597.00], EntityItem['item.item.snowball'/282775, l='MpServer', x=1247.77, y=4.00, z=663.96], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283287, l='MpServer', x=1254.00, y=9.00, z=598.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283280, l='MpServer', x=1203.00, y=36.00, z=541.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283281, l='MpServer', x=1200.00, y=31.00, z=541.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283282, l='MpServer', x=1317.00, y=26.00, z=590.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283283, l='MpServer', x=1318.00, y=24.00, z=591.00], EntityItem['item.item.snowball'/282269, l='MpServer', x=1233.13, y=21.00, z=585.88], EntityItem['item.item.snowball'/282270, l='MpServer', x=1214.54, y=42.00, z=594.44], EntityItem['item.item.snowball'/282271, l='MpServer', x=1249.50, y=7.00, z=600.18], EntityItem['item.item.snowball'/282776, l='MpServer', x=1250.69, y=5.00, z=664.66], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283288, l='MpServer', x=1311.00, y=61.00, z=683.00], EntityItem['item.item.sulphur'/282265, l='MpServer', x=1223.90, y=18.00, z=599.51], EntityItem['item.item.snowball'/282777, l='MpServer', x=1250.15, y=3.00, z=660.13], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283289, l='MpServer', x=1308.00, y=60.00, z=685.00], EntityItem['item.item.sulphur'/282266, l='MpServer', x=1221.13, y=19.00, z=597.41], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283290, l='MpServer', x=1311.00, y=64.00, z=687.00], EntityItem['item.item.snowball'/282276, l='MpServer', x=1257.36, y=9.00, z=650.94], EntityZombie['Zombie'/279717, l='MpServer', x=1291.70, y=7.00, z=593.70], EntityItem['item.item.snowball'/282790, l='MpServer', x=1251.88, y=3.00, z=663.65], EntityItem['item.item.snowball'/282784, l='MpServer', x=1250.77, y=4.00, z=658.04], EntityItem['item.tile.stone.granite'/282272, l='MpServer', x=1211.18, y=45.00, z=603.88], EntityItem['item.tile.stonebrick'/282273, l='MpServer', x=1240.88, y=1.00, z=607.88], EntityItem['item.item.snowball'/282785, l='MpServer', x=1245.73, y=4.00, z=662.47], EntityItem['item.tile.stonebrick'/282274, l='MpServer', x=1216.29, y=27.00, z=614.88], EntityItem['item.tile.stonebrick'/282275, l='MpServer', x=1204.98, y=56.00, z=614.13], EntityItem['item.item.snowball'/282797, l='MpServer', x=1251.84, y=4.00, z=660.46], EntityItem['item.item.snowball'/283310, l='MpServer', x=1229.47, y=3.00, z=659.62], EntityItem['item.item.snowball'/282793, l='MpServer', x=1252.35, y=2.00, z=662.48], EntityItem['item.item.snowball'/283315, l='MpServer', x=1230.13, y=2.00, z=655.13], EntityCreeper['Creeper'/279749, l='MpServer', x=1330.70, y=52.00, z=679.70], EntityZombie['Zombie'/280262, l='MpServer', x=1296.76, y=56.17, z=679.42], EntityItem['item.item.snowball'/283341, l='MpServer', x=1221.92, y=4.00, z=637.83], EntityZombie['Zombie'/279246, l='MpServer', x=1281.37, y=9.00, z=565.30], EntityItem['item.tile.stonebrick'/283342, l='MpServer', x=1227.46, y=2.48, z=647.88], EntityItem['item.item.snowball'/283343, l='MpServer', x=1220.48, y=4.00, z=647.71], EntityItem['item.item.snowball'/283348, l='MpServer', x=1216.72, y=5.00, z=644.13], EntityCreeper['Creeper'/279253, l='MpServer', x=1210.54, y=29.00, z=588.77], EntityItem['item.item.snowball'/283349, l='MpServer', x=1226.62, y=2.00, z=645.17], EntityItem['item.item.snowball'/283351, l='MpServer', x=1219.27, y=3.00, z=640.13], EntitySkeleton['Skeleton'/280273, l='MpServer', x=1322.70, y=30.00, z=566.30], EntityItem['item.item.snowball'/283345, l='MpServer', x=1225.77, y=2.00, z=647.34], EntityItem['item.item.snowball'/283346, l='MpServer', x=1225.23, y=3.00, z=648.88], EntityZombie['Zombie'/279763, l='MpServer', x=1274.54, y=29.00, z=549.75], EntityItem['item.item.snowball'/283347, l='MpServer', x=1224.88, y=3.00, z=644.92], EntityItem['item.item.snowball'/283357, l='MpServer', x=1241.16, y=5.00, z=636.88], EntityPlayerSP['Player386'/216, l='MpServer', x=1258.40, y=83.79, z=604.03], EntityItem['item.item.snowball'/283359, l='MpServer', x=1247.48, y=9.00, z=632.49], EntityItem['item.item.snowball'/283352, l='MpServer', x=1220.60, y=3.00, z=651.58], EntityItem['item.item.snowball'/283353, l='MpServer', x=1220.72, y=4.00, z=646.84], EntityItem['item.item.snowball'/283354, l='MpServer', x=1220.19, y=3.00, z=642.87], EntityItem['item.tile.stonebrick'/283366, l='MpServer', x=1243.14, y=8.57, z=637.53], EntityItem['item.item.snowball'/283367, l='MpServer', x=1241.92, y=6.69, z=632.46], EntityItem['item.item.snowball'/283361, l='MpServer', x=1248.03, y=11.00, z=630.07], EntityItem['item.item.snowball'/283362, l='MpServer', x=1242.88, y=14.00, z=642.08], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283373, l='MpServer', x=1199.00, y=45.00, z=572.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283374, l='MpServer', x=1201.00, y=53.00, z=555.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283375, l='MpServer', x=1202.00, y=47.00, z=555.00], EntityBat['Bat'/282346, l='MpServer', x=1336.28, y=49.09, z=666.69], EntityCreeper['Creeper'/282373, l='MpServer', x=1232.91, y=4.00, z=632.30], EntityCreeper['Creeper'/282374, l='MpServer', x=1251.50, y=8.00, z=583.50], EntityCreeper['Creeper'/281870, l='MpServer', x=1275.35, y=43.00, z=679.70], EntityZombieVillager['Zombie Villager'/281867, l='MpServer', x=1331.70, y=10.00, z=673.70], EntityZombie['Zombie'/279830, l='MpServer', x=1197.30, y=59.00, z=607.37], EntityBat['Bat'/282385, l='MpServer', x=1214.17, y=55.70, z=667.62], EntityItem['item.tile.stonebrick'/282918, l='MpServer', x=1221.12, y=4.00, z=639.32], EntityItem['item.tile.stonebrick'/282925, l='MpServer', x=1223.13, y=6.00, z=631.73], EntityItem['item.item.snowball'/282920, l='MpServer', x=1221.52, y=5.00, z=634.58], EntityStray['Stray'/280875, l='MpServer', x=1235.30, y=4.12, z=642.30], EntityItem['item.item.snowball'/282928, l='MpServer', x=1220.70, y=3.00, z=639.12], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283449, l='MpServer', x=1306.00, y=63.00, z=685.00], EntitySpider['Spider'/282436, l='MpServer', x=1223.50, y=36.00, z=552.50], EntityZombie['Zombie'/282435, l='MpServer', x=1259.18, y=41.00, z=530.50], EntityItem['item.item.dyePowder.black'/282964, l='MpServer', x=1228.65, y=55.00, z=561.13], EntityZombie['Zombie'/281950, l='MpServer', x=1196.54, y=49.00, z=573.30], EntityBat['Bat'/282458, l='MpServer', x=1203.25, y=46.10, z=597.75], EntityBat['Bat'/282468, l='MpServer', x=1205.50, y=55.10, z=623.75], EntityZombie['Zombie'/279399, l='MpServer', x=1283.30, y=45.00, z=683.70], EntityZombie['Zombie'/280940, l='MpServer', x=1216.30, y=17.00, z=611.47], EntitySquid['Squid'/282990, l='MpServer', x=1234.30, y=61.00, z=549.59], EntityCreeper['Creeper'/282479, l='MpServer', x=1260.50, y=22.00, z=571.50], EntitySquid['Squid'/282991, l='MpServer', x=1237.59, y=62.55, z=549.30], EntityStray['Stray'/282486, l='MpServer', x=1314.50, y=59.00, z=553.50], EntitySquid['Squid'/282992, l='MpServer', x=1225.60, y=34.60, z=552.51], EntitySquid['Squid'/281459, l='MpServer', x=1207.31, y=61.87, z=552.88], EntitySpider['Spider'/282495, l='MpServer', x=1207.50, y=48.00, z=603.50], EntitySquid['Squid'/283003, l='MpServer', x=1208.97, y=50.16, z=559.96], EntitySquid['Squid'/283021, l='MpServer', x=1234.04, y=41.07, z=541.97], EntityBat['Bat'/279432, l='MpServer', x=1300.75, y=17.10, z=606.25], EntityCreeper['Creeper'/282005, l='MpServer', x=1236.30, y=30.00, z=569.30], EntityCreeper['Creeper'/282006, l='MpServer', x=1193.30, y=41.00, z=569.30], EntitySkeleton['Skeleton'/282523, l='MpServer', x=1335.50, y=49.00, z=678.50], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283048, l='MpServer', x=1314.00, y=59.00, z=553.00], EntityAreaEffectCloud['entity.AreaEffectCloud.name'/283049, l='MpServer', x=1322.00, y=30.00, z=566.00], EntityZombie['Zombie'/282555, l='MpServer', x=1215.44, y=31.00, z=594.70], EntityCreeper['Creeper'/282560, l='MpServer', x=1314.54, y=31.00, z=539.77], EntityZombie['Zombie'/282049, l='MpServer', x=1311.70, y=29.00, z=681.70], EntitySkeleton['Skeleton'/281559, l='MpServer', x=1239.30, y=36.00, z=537.56], EntityBat['Bat'/283088, l='MpServer', x=1238.44, y=44.10, z=547.75], EntityItem['item.item.dyePowder.black'/280540, l='MpServer', x=1206.13, y=53.00, z=546.21], EntityCreeper['Creeper'/282094, l='MpServer', x=1295.65, y=27.00, z=545.30], EntityEnderman['Enderman'/282090, l='MpServer', x=1204.30, y=35.00, z=606.33], EntityZombie['Zombie'/282091, l='MpServer', x=1217.02, y=36.00, z=550.17], EntityZombie['Zombie'/280049, l='MpServer', x=1318.70, y=15.00, z=676.70], EntityBat['Bat'/281594, l='MpServer', x=1222.56, y=23.77, z=577.46]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:420)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2741)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:427)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.legacydev.Main.start(Main.java:86)
+	at net.minecraftforge.legacydev.MainClient.main(MainClient.java:29)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_191, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 907329752 bytes (865 MB) / 1763704832 bytes (1682 MB) up to 15140913152 bytes (14439 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP 9.42 Powered by Forge 14.23.5.2859 5 mods loaded, 5 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID          | Version      | Source                                                             | Signature |
+	|:------ |:----------- |:------------ |:------------------------------------------------------------------ |:--------- |
+	| LCHIJA | minecraft   | 1.12.2       | minecraft.jar                                                      | None      |
+	| LCHIJA | mcp         | 9.42         | minecraft.jar                                                      | None      |
+	| LCHIJA | FML         | 8.0.99.99    | forge-1.12.2-14.23.5.2859_mapped_snapshot_20171003-1.12-recomp.jar | None      |
+	| LCHIJA | forge       | 14.23.5.2859 | forge-1.12.2-14.23.5.2859_mapped_snapshot_20171003-1.12-recomp.jar | None      |
+	| LCHIJA | foundations | 0.0.1        | main                                                               | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'Intel' Version: '4.6.0 - Build 32.0.101.5972' Renderer: 'Intel(R) Arc(TM) Graphics'
+	Launched Version: 1.12
+	LWJGL: 2.9.4
+	OpenGL: Intel(R) Arc(TM) Graphics GL version 4.6.0 - Build 32.0.101.5972, Intel
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 22x Intel(R) Core(TM) Ultra 9 185H

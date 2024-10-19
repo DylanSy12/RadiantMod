@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 
-public class MysticalHoe extends ItemHoe {
-	
-	public MysticalHoe() {
-		super(Main.myToolMaterial14);
+public class MysticalHoe extends ItemHoe
+{
+	public MysticalHoe() 
+	{
+		super(Main.mysticalHoeMaterial);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

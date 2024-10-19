@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 
-public class MysticalShovel extends ItemSpade {
-	
-	public MysticalShovel() {
-		super(Main.myToolMaterial15);
+public class MysticalShovel extends ItemSpade 
+{
+	public MysticalShovel() 
+	{
+		super(Main.mysticalShovelMaterial);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderRadiantLord extends RenderBiped<RadiantLord> {
 
-	private static final ResourceLocation bipedTexture = new ResourceLocation(
+	private static final ResourceLocation radiantLordTexture = new ResourceLocation(
 //			Main.MODID, "mobs/biped_texture.png");
 			Main.MODID, "mobs/radiant_lord_texture.png");
 	
@@ -78,6 +78,6 @@ public class RenderRadiantLord extends RenderBiped<RadiantLord> {
 	
 	protected ResourceLocation getEntityTexture(RadiantLord entity)
     {
-        return bipedTexture;
+        return radiantLordTexture;
     }
 }

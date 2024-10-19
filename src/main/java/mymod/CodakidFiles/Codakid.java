@@ -7,11 +7,11 @@ import java.util.Random;
 import mymod.Main;
 import mymod.Enchantments.EnchantmentHeat;
 import mymod._01_ForgeYourSword.RadiantLord;
-import mymod._02_PowerOre.CustomOre;
-import mymod._07_BuildAndBoom.EntityBuildGrenade;
-import mymod._07_BuildAndBoom.EntityClusterGrenadeFragment;
+import mymod._02_PowerOre.RadiantOre;
+import mymod._07_BuildAndBoom.EntityRadiantBuildGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantClusterGrenadeFragment;
 import mymod._07_BuildAndBoom.EntityGodEraserGrenade;
-import mymod._07_BuildAndBoom.EntityGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantGrenade;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -322,10 +322,10 @@ public class Codakid {
 	}
 
 
-	public static void spawnEntity(World world, double x, double y, double z,
-			EntityGodEraserGrenade entityGodEraserGrenade) {
-		// TODO Auto-generated method stub
-		
-	}
+//	public static void spawnEntity(World world, double x, double y, double z,
+//			EntityGodEraserGrenade entityGodEraserGrenade) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

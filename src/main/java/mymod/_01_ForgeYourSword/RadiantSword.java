@@ -44,7 +44,7 @@ public class RadiantSword extends ItemSword {
 	private int prevCooldown;
 	private int cooldownTime;
 	public RadiantSword() {
-		super(Main.myToolMaterial);
+		super(Main.radiantSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.time1=System.currentTimeMillis()-1250;
 		this.using=false;

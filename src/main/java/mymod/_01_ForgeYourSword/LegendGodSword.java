@@ -61,7 +61,7 @@ public class LegendGodSword extends ItemSword
 	
 	public LegendGodSword() 
 	{
-		super(Main.myToolMaterial21);
+		super(Main.legendGodSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
 	

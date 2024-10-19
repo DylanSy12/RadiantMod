@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rtt",
+    "dnt",
+    "bdr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:mystical_ingot"
+     },
+    "b": { 
+      "item": "minecraft:obsidian"
+     },
+    "d": {
+      "item": "minecraft:dye",
+      "data": 4
+     },
+    "n": {
+      "item": "minecraft:diamond"
+     },
+    "t": {
+      "item": "minecraft:end_crystal"
+     }
+  },
+  "result": {
+    "item": "foundations:mystical_crystal_launcher"
+  }
+}

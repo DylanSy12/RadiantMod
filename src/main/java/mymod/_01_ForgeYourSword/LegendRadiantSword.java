@@ -65,7 +65,7 @@ public class LegendRadiantSword extends ItemSword
 	
 	public LegendRadiantSword() 
 	{
-		super(Main.myToolMaterial23);
+		super(Main.legendRadiantSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
 	

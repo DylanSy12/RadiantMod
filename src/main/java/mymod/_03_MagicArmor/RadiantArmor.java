@@ -33,7 +33,7 @@ public class RadiantArmor extends ItemArmor {
     }
     
 	public RadiantArmor(int renderIndex, EntityEquipmentSlot armorType) {
-		super(Main.myArmorMaterial, renderIndex, armorType);
+		super(Main.radiantArmorMaterial, renderIndex, armorType);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
 	

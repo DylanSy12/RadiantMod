@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 
-public class GodAxe extends ItemAxe {
-	
-	public GodAxe() {
-		super(Main.myToolMaterial16,105f,-1.5f);
+public class GodAxe extends ItemAxe 
+{
+	public GodAxe() 
+	{
+		super(Main.godAxeMaterial, 105f, -1.5f);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

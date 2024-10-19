@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rdr",
+    "r r",
+    "r r"
+  ],
+  "key": {
+    "r": {
+      "item": "foundations:radiant_ingot"
+     },
+    "d": {
+      "item": "minecraft:diamond"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_leggings"
+  }
+}

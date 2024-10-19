@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "foundations:blocks/radiant_small_structure"
+    }
+}

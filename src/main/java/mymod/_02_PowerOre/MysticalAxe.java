@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 
-public class MysticalAxe extends ItemAxe {
-	
-	public MysticalAxe() {
-		super(Main.myToolMaterial13,31f,-2.5f);
+public class MysticalAxe extends ItemAxe 
+{
+	public MysticalAxe() 
+	{
+		super(Main.mysticalAxeMaterial, 31f, -2.5f);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rrr",
+    "rsr",
+    "rrr"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:dropper"
+     },
+    "r": {
+      "item": "foundations:radiant_ingot"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_lucky_block"
+  }
+}

@@ -63,7 +63,7 @@ public class LegendMysticalSword extends ItemSword
 	
 	public LegendMysticalSword() 
 	{
-		super(Main.myToolMaterial22);
+		super(Main.legendMysticalSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
 	

@@ -16,8 +16,8 @@ import net.minecraft.block.BlockDirectional;
 
 public class RadiantBigStructureBlock extends Block {
 	
-	IBlockState L = Main.luckyBlock.getDefaultState();
-	IBlockState O = Main.myOre.getDefaultState();
+	IBlockState L = Main.radiantLuckyBlock.getDefaultState();
+	IBlockState O = Main.radiantOre.getDefaultState();
 	IBlockState R = Main.radiantBlock.getDefaultState();
 	IBlockState C = Blocks.CHEST.getDefaultState();
 	IBlockState A = Blocks.AIR.getDefaultState();
@@ -114,14 +114,14 @@ public class RadiantBigStructureBlock extends Block {
 		world.setBlockState(pos.add(3, 4, 3), Main.radiantBlock.getDefaultState());
 		world.setBlockState(pos.add(-3, 4, 3), Main.radiantBlock.getDefaultState());
 		world.setBlockState(pos.add(0, 4, 0), Main.radiantBlock.getDefaultState());
-		world.setBlockState(pos.add(2, 1, -2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(2, 1, 2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(-2, 1, 2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(-2, 1, -2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(0, 1, -2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(0, 1, 2), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(-2, 1, 0), Main.luckyBlock.getDefaultState());
-		world.setBlockState(pos.add(2, 1, 0), Main.luckyBlock.getDefaultState());
+		world.setBlockState(pos.add(2, 1, -2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(2, 1, 2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(-2, 1, 2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(-2, 1, -2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(0, 1, -2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(0, 1, 2), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(-2, 1, 0), Main.radiantLuckyBlock.getDefaultState());
+		world.setBlockState(pos.add(2, 1, 0), Main.radiantLuckyBlock.getDefaultState());
 		world.setBlockState(pos.add(-3, 1, 2), Blocks.RED_SANDSTONE_STAIRS.getDefaultState());
 		world.setBlockState(pos.add(-3, 1, 1), Blocks.RED_SANDSTONE_STAIRS.getDefaultState());
 		world.setBlockState(pos.add(-3, 1, -2), Blocks.RED_SANDSTONE_STAIRS.getDefaultState());

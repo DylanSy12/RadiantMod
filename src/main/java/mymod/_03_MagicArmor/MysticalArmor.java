@@ -32,7 +32,7 @@ public class MysticalArmor extends ItemArmor {
     }
     
 	public MysticalArmor(int renderIndexIn, EntityEquipmentSlot armorType) {
-		super(Main.myArmorMaterial2, renderIndexIn, armorType);
+		super(Main.mysticalArmorMaterial, renderIndexIn, armorType);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 	}
 	@Override

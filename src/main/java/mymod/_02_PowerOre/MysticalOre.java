@@ -10,15 +10,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MysticalOre extends Block {
-
-	public MysticalOre(){
-		
+public class MysticalOre extends Block 
+{
+	public MysticalOre()
+	{
 		super(Material.ROCK);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(8f);
 		this.setHarvestLevel("pickaxe", 3);
 		this.setLightLevel(0.5f);
 	}
-	
 }

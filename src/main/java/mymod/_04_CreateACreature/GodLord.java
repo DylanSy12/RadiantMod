@@ -43,7 +43,7 @@ public class GodLord extends EntityMob {
 	public float health;
 	public long lightningCooldown;
 //	protected static final UUID MAX_HEALTH_UUID = UUID.fromString("01712f7e-776c-4d28-a28f-0fe6cb491ad9");
-	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/god_monster");
+	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/god_lord");
 
 	public GodLord(World worldIn) {
 		super(worldIn);
@@ -139,8 +139,8 @@ public class GodLord extends EntityMob {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMob.class, true));
@@ -166,7 +166,7 @@ public class GodLord extends EntityMob {
         	int i = this.rand.nextInt(6);
         	if (i <= 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.godSword));
         	else if (i <= 3) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.godSwordL));
-        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.eraserHammer));
+        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.godEraserSword));
         }
         this.setCanPickUpLoot(true);
 

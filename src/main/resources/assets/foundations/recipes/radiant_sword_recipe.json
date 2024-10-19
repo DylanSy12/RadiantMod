@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ngm",
+    "gmg",
+    "hgn"
+  ],
+  "key": {
+    "m": { 
+      "item": "foundations:radiant_ingot"
+     },
+    "h": { 
+      "item": "minecraft:blaze_rod"
+     },
+    "g": {
+      "item": "minecraft:diamond"
+     },
+    "n": {
+      "item": "minecraft:nether_star"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_sword"
+  }
+}

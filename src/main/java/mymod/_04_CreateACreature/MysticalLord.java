@@ -44,7 +44,7 @@ public class MysticalLord extends EntityMob {
 	public float health;
 	public long effectCooldown;
 	
-	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/mystical_monster");
+	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/mystical_lord");
 
 	public MysticalLord(World worldIn) {
 		super(worldIn);
@@ -144,8 +144,8 @@ public class MysticalLord extends EntityMob {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMob.class, true));
@@ -171,7 +171,7 @@ public class MysticalLord extends EntityMob {
         	int i = this.rand.nextInt(6);
         	if (i <= 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.mysticalSword));
         	else if (i <= 3) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.mysticalSwordL));
-        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.portalHammer));
+        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.mysticalPortalSword));
         }
         this.setCanPickUpLoot(true);
 

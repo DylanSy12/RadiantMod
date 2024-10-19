@@ -70,7 +70,7 @@ public class EnchantmentDeathTouch extends Enchantment {
     @Override
     public void onEntityDamaged(EntityLivingBase user, Entity target, int level)
     {
-    	if (target instanceof EntityLivingBase)
+    	if (target instanceof EntityLivingBase && !(user instanceof EntityPlayer))
         {
             EntityLivingBase entitylivingbase = (EntityLivingBase)target;
             Random rand = new Random();

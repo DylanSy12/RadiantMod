@@ -54,7 +54,7 @@ public class DestructionLord extends EntityMob {
 	public float prevHealth;
 	public long explosionCooldown;
 
-	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/destruction_monster");
+	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/destruction_lord");
 
 	public DestructionLord(World worldIn) {
 		super(worldIn);
@@ -173,8 +173,8 @@ public class DestructionLord extends EntityMob {
 		this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(8, new EntityAILookIdle(this));
 		this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true, new Class[] { EntityPigZombie.class }));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
 		this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMob.class, true));
@@ -206,7 +206,7 @@ public class DestructionLord extends EntityMob {
         	int i = this.rand.nextInt(6);
         	if (i <= 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.destructionSword));
         	else if (i <= 3) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.destructionSwordL));
-        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.explosionHammer));
+        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.destructionExplosionSword));
         }
 //        this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.destructionHelmet));
 //        this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.destructionChestplate));

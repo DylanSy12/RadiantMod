@@ -1,11 +1,11 @@
 package mymod.CodakidFiles;
 
 import mymod.Main;
-import mymod._07_BuildAndBoom.EntityBuildGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantBuildGrenade;
 import mymod._07_BuildAndBoom.EntityGodBuildGrenade;
 import mymod._07_BuildAndBoom.EntityGodEraserGrenade;
-import mymod._07_BuildAndBoom.EntityWorldEraserGrenade;
-import mymod._07_BuildAndBoom.EntityWorldErasingGrenade;
+import mymod._07_BuildAndBoom.EntityDestructionEraserGrenade;
+import mymod._07_BuildAndBoom.EntityDestructionTNTGrenade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
@@ -19,14 +19,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderWorldGrenadeErasing extends Render<EntityWorldErasingGrenade>
+public class RenderWorldGrenadeErasing extends Render<EntityDestructionTNTGrenade>
 {
     private static ResourceLocation worldErasingGrenadeTexture = new ResourceLocation(
 			Main.MODID, "items/world_erasing_grenade.png");
     
     public static ItemStack worldErasingGrenadeStack = ItemStack.EMPTY;
     
-    public static final IRenderFactory FACTORY = new FactoryWGER();
+    public static final IRenderFactory FACTORY = new FactoryDTG();
 
     public RenderWorldGrenadeErasing(RenderManager renderManagerIn) {
     	super(renderManagerIn);
@@ -35,7 +35,7 @@ public class RenderWorldGrenadeErasing extends Render<EntityWorldErasingGrenade>
 	/**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityWorldErasingGrenade entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityDestructionTNTGrenade entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)x, (float)y, (float)z);
@@ -64,7 +64,7 @@ public class RenderWorldGrenadeErasing extends Render<EntityWorldErasingGrenade>
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public ItemStack getStackToRender(EntityWorldErasingGrenade entityIn)
+    public ItemStack getStackToRender(EntityDestructionTNTGrenade entityIn)
     {
         return worldErasingGrenadeStack;
     }
@@ -73,18 +73,18 @@ public class RenderWorldGrenadeErasing extends Render<EntityWorldErasingGrenade>
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
     @Override
-	protected ResourceLocation getEntityTexture(EntityWorldErasingGrenade entity) {
+	protected ResourceLocation getEntityTexture(EntityDestructionTNTGrenade entity) {
 		return worldErasingGrenadeTexture;
 	}
     
-	public static class FactoryWGER implements IRenderFactory<EntityWorldErasingGrenade> {
+	public static class FactoryDTG implements IRenderFactory<EntityDestructionTNTGrenade> {
 		
-		public void setWorldGrenade(Item worldErasingGrenade) {
+		public void setDestructionTNTGrenade(Item worldErasingGrenade) {
 			worldErasingGrenadeStack = new ItemStack(worldErasingGrenade);
 		}
 
         @Override
-        public Render<? super EntityWorldErasingGrenade> createRenderFor(RenderManager manager) {
+        public Render<? super EntityDestructionTNTGrenade> createRenderFor(RenderManager manager) {
             return new RenderWorldGrenadeErasing(manager);
         }
 

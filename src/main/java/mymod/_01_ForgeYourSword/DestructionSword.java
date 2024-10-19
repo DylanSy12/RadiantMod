@@ -52,7 +52,7 @@ public class DestructionSword extends ItemSword {
 	private int prevCooldown;
 	private int cooldownTime;
 	public DestructionSword() {
-		super(Main.myToolMaterial19);
+		super(Main.destructionSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.explosionStrength=5;
 //		this.range=200;

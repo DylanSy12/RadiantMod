@@ -116,9 +116,11 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "forest": "2024-10-08 22:05:34 -0700",
+      "extreme_hills_with_trees": "2024-10-10 02:34:02 -0700",
       "forest_hills": "2024-10-08 22:54:01 -0700",
       "plains": "2024-10-08 22:56:53 -0700",
       "taiga": "2024-10-08 22:54:04 -0700",
+      "extreme_hills": "2024-10-10 02:34:39 -0700",
       "river": "2024-10-08 22:54:07 -0700"
     },
     "done": false

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "drr",
+    "nbd",
+    "nbn"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:blaze_rod"
+     },
+    "r": {
+      "item": "foundations:radiant_ingot"
+     },
+    "d": {
+      "item": "minecraft:diamond"
+     },
+    "n": {
+      "item": "minecraft:nether_star"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_hoe"
+  }
+}

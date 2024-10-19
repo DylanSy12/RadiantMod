@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rtr",
+    "ttt",
+    "rtr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:radiant_ingot"
+     },
+    "t": { 
+      "item": "minecraft:tnt"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_cluster_grenade"
+  }
+}

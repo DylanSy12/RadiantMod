@@ -45,7 +45,7 @@ public class LuckyBiome extends Biome {
 			this.fillerBlock = Main.mysticalBlock.getDefaultState();
 		}
 		else if(number <=2) {
-			this.topBlock = Main.luckyBlock.getDefaultState();
+			this.topBlock = Main.radiantLuckyBlock.getDefaultState();
 			this.fillerBlock = Main.radiantBlock.getDefaultState();
 		}
 		else if(number<=3) {
@@ -58,7 +58,7 @@ public class LuckyBiome extends Biome {
 		}
 		else if(number<=7) {
 			this.topBlock = Main.radiantBlock.getDefaultState();
-			this.fillerBlock=Main.myOre.getDefaultState();
+			this.fillerBlock=Main.radiantOre.getDefaultState();
 		}
 		else {
 			this.topBlock = Main.mysticalBlock.getDefaultState();

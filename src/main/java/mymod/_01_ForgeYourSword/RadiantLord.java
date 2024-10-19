@@ -42,7 +42,7 @@ public class RadiantLord extends EntityMob {
 	public float health;
 	public long explosionCooldown;
 	
-	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/my_monster");
+	public static final ResourceLocation LOOT = new ResourceLocation(Main.MODID, "entities/radiant_lord");
 	
 	public RadiantLord(World world)
 	{
@@ -123,8 +123,8 @@ public class RadiantLord extends EntityMob {
     protected void applyEntityAI()
     {
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityMob.class, true));
@@ -146,22 +146,22 @@ public class RadiantLord extends EntityMob {
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
         if (this.rand.nextInt(10) == 1) {
-        	this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.myHelmet));
+        	this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Main.radiantHelmet));
         }
         if (this.rand.nextInt(10) == 1) {
-        	this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.myChestplate));
+        	this.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Main.radiantChestplate));
         }
         if (this.rand.nextInt(10) == 1) {
-        	this.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.myLeggings));
+        	this.setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(Main.radiantLeggings));
         }
         if (this.rand.nextInt(10) == 1) {
-        	this.setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(Main.myBoots));
+        	this.setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(Main.radiantBoots));
         }
         if (this.rand.nextInt(10) == 1) {
         	int i = this.rand.nextInt(6);
-        	if (i <= 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.mySword));
+        	if (i <= 2) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.radiantSword));
         	else if (i <= 3) this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.radiantSwordL));
-        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.myHammer));
+        	else this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Main.radiantLightningSword));
         }
         this.setCanPickUpLoot(true);
 

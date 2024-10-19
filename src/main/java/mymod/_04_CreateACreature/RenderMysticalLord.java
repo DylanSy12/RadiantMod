@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMysticalLord extends RenderBiped<MysticalLord> {
 
-	private static final ResourceLocation mobTexture = new ResourceLocation(
+	private static final ResourceLocation mysticalLordTexture = new ResourceLocation(
 //			Main.MODID, "mobs/mystical_biped_texture.png");
 			Main.MODID, "mobs/mystical_lord_texture.png");
 	
@@ -74,6 +74,6 @@ public class RenderMysticalLord extends RenderBiped<MysticalLord> {
 	
 	protected ResourceLocation getEntityTexture(MysticalLord entity)
     {
-        return mobTexture;
+        return mysticalLordTexture;
     }
 }

@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderDestructionLord extends RenderBiped<DestructionLord> {
 
-	private static final ResourceLocation mobTexture = new ResourceLocation(
+	private static final ResourceLocation destructionLordTexture = new ResourceLocation(
 //			Main.MODID, "mobs/destruction_biped_texture.png");
 			Main.MODID, "mobs/destruction_lord_texture.png");
 	
@@ -76,6 +76,6 @@ public class RenderDestructionLord extends RenderBiped<DestructionLord> {
     }
 	protected ResourceLocation getEntityTexture(DestructionLord entity)
     {
-        return mobTexture;
+        return destructionLordTexture;
     }
 }

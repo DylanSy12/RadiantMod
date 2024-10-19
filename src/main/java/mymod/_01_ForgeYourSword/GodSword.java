@@ -41,7 +41,7 @@ public class GodSword extends ItemSword {
 	private int prevCooldown;
 	private int cooldownTime;
 	public GodSword() {
-		super(Main.myToolMaterial6);
+		super(Main.godSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.time1=System.currentTimeMillis()-2500;
 		this.range=200;

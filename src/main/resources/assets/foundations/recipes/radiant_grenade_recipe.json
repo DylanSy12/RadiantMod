@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rgr",
+    "gtg",
+    "rgr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:radiant_ingot"
+     },
+    "t": { 
+      "item": "minecraft:tnt"
+     },
+    "g": { 
+      "item": "minecraft:gunpowder"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_grenade"
+  }
+}

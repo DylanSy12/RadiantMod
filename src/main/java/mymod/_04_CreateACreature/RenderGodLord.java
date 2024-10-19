@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderGodLord extends RenderBiped<GodLord> {
 
-	private static final ResourceLocation mobTexture = new ResourceLocation(
+	private static final ResourceLocation godLordTexture = new ResourceLocation(
 //			Main.MODID, "mobs/god_biped_texture.png");
 			Main.MODID, "mobs/god_lord_texture.png");
 	
@@ -73,6 +73,6 @@ public class RenderGodLord extends RenderBiped<GodLord> {
     }
 	protected ResourceLocation getEntityTexture(GodLord entity)
     {
-        return mobTexture;
+        return godLordTexture;
     }
 }

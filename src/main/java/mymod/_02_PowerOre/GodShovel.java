@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 
-public class GodShovel extends ItemSpade {
-	
-	public GodShovel() {
-		super(Main.myToolMaterial18);
+public class GodShovel extends ItemSpade 
+{
+	public GodShovel() 
+	{
+		super(Main.godShovelMaterial);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

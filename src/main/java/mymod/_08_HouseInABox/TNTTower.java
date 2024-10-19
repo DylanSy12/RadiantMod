@@ -16,8 +16,8 @@ import net.minecraft.block.BlockDirectional;
 
 public class TNTTower extends Block {
 	
-	IBlockState L = Main.luckyBlock.getDefaultState();
-	IBlockState O = Main.myOre.getDefaultState();
+	IBlockState L = Main.radiantLuckyBlock.getDefaultState();
+	IBlockState O = Main.radiantOre.getDefaultState();
 	IBlockState R = Main.radiantBlock.getDefaultState();
 	IBlockState C = Blocks.CHEST.getDefaultState();
 	IBlockState A = Blocks.AIR.getDefaultState();
@@ -40,7 +40,7 @@ public class TNTTower extends Block {
 	}
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
-		for(int y = 0; y < 255; y++)
+		for(int y = -255; y < 255; y++)
 		{
 			world.setBlockState(pos.add(0, y, 0), Y);
 		}

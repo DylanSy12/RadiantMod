@@ -41,13 +41,13 @@ public class RadiantBiome extends Biome {
 		int number = rand.nextInt(45) + 1;
 		
 		if(number < 3) {
-			this.topBlock = Main.luckyBlock.getDefaultState();
+			this.topBlock = Main.radiantLuckyBlock.getDefaultState();
 			this.fillerBlock = Main.radiantBlock.getDefaultState();
 		}
 		
 		else {
 			this.topBlock = Main.radiantBlock.getDefaultState();
-			this.fillerBlock = Main.myOre.getDefaultState();
+			this.fillerBlock = Main.radiantOre.getDefaultState();
 		}
 
 		this.generateBiomeTerrain(worldIn, rand, chunk, num1, num2, num3);

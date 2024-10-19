@@ -83,7 +83,7 @@ public class GodArmor extends ItemArmor {
 	private int regenTick;
 	
 	public GodArmor(int renderIndexIn, EntityEquipmentSlot armorType) {
-		super(Main.myArmorMaterial3, renderIndexIn, armorType);
+		super(Main.godArmorMaterial, renderIndexIn, armorType);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 		this.regenTick = 0;
 		this.setMaxDamage(999999999);

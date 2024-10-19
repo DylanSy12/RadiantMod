@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rtt",
+    "dnt",
+    "bdr"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:radiant_ingot"
+     },
+    "b": { 
+      "item": "minecraft:blaze_rod"
+     },
+    "d": {
+      "item": "minecraft:diamond"
+     },
+    "n": {
+      "item": "minecraft:nether_star"
+     },
+    "t": {
+      "item": "minecraft:lava_bucket"
+     }
+  },
+  "result": {
+    "item": "foundations:radiant_lava_launcher"
+  }
+}

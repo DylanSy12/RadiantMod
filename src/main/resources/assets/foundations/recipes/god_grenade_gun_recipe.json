@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nrt",
+    "dtr",
+    "bdn"
+  ],
+  "key": {
+    "r": { 
+      "item": "foundations:god_ingot"
+     },
+    "b": { 
+      "item": "foundations:radiant_ingot"
+     },
+    "d": {
+      "item": "foundations:mystical_ingot"
+     },
+    "n": {
+      "item": "minecraft:beacon"
+     },
+    "t": {
+      "item": "foundations:nuke"
+     }
+  },
+  "result": {
+    "item": "foundations:god_grenade_gun"
+  }
+}

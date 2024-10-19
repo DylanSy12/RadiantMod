@@ -22,10 +22,10 @@ import mymod.CodakidFiles.Codakid;
 import mymod._01_ForgeYourSword.RadiantLord;
 import mymod._04_CreateACreature.GodLord;
 import mymod._04_CreateACreature.MysticalLord;
-import mymod._07_BuildAndBoom.EntityBuildGrenade;
-import mymod._07_BuildAndBoom.EntityClusterGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantBuildGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantClusterGrenade;
 import mymod._07_BuildAndBoom.EntityGodEraserGrenade;
-import mymod._07_BuildAndBoom.EntityGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantGrenade;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -101,7 +101,7 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number <= 10)
 		{
-			Codakid.spawnEntity(world, pos, new EntityClusterGrenade(world));
+			Codakid.spawnEntity(world, pos, new EntityRadiantClusterGrenade(world));
 		}
 		else if(number <= 16)
 		{
@@ -109,7 +109,7 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number <= 18)
 		{
-			Codakid.spawnEntity(world, pos, new EntityGrenade(world));
+			Codakid.spawnEntity(world, pos, new EntityRadiantGrenade(world));
 		}
 		else if(number <= 25)
 		{
@@ -122,11 +122,11 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.godPickaxe, 1);
 			Codakid.spawnBlock(world, pos, Main.godOre, 1);
 			Codakid.spawnBlock(world, pos, Main.godLuckyBlock, 1);
-			Codakid.spawnItem(world, pos, Main.eraserHammer, 1);
-			Codakid.spawnItem(world, pos, Main.luckyBlockLauncher, 1);
-			Codakid.spawnItem(world, pos, Main.boomGun, 1);
+			Codakid.spawnItem(world, pos, Main.godEraserSword, 1);
+			Codakid.spawnItem(world, pos, Main.godLuckyBlockLauncher, 1);
+			Codakid.spawnItem(world, pos, Main.godGrenadeGun, 1);
 			Codakid.spawnItem(world, pos, Main.godEraserGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.recursiveClusterGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.godClusterGrenade, 1);
 			Codakid.spawnItem(world, pos, Main.godBuildGrenade, 1);
 			Codakid.spawnBlock(world, pos, Main.godBlock, 1);
 			Codakid.spawnItem(world, pos, Main.godAxe,1);
@@ -181,7 +181,7 @@ public class GodLuckyBlock extends Block {
 //			Codakid.spawnItem(world, pos,stack1.get(4).getItem(),10);
 //			Codakid.spawnItem(world, pos, Items.GOLD_NUGGET, 6);
 //			Codakid.spawnItem(world, pos, Items.IRON_NUGGET, 6);
-			Codakid.spawnItem(world, pos, Main.myIngot, rand.nextInt(5)+1);
+			Codakid.spawnItem(world, pos, Main.radiantIngot, rand.nextInt(5)+1);
 			Codakid.spawnItem(world, pos, Main.mysticalIngot, rand.nextInt(4)+2);
 			Codakid.spawnItem(world, pos, Main.godIngot, rand.nextInt(4));
 			ItemStack stack = new ItemStack(new ItemFirework());
@@ -268,16 +268,16 @@ public class GodLuckyBlock extends Block {
 		{
 			Codakid.spawnBlock(world, pos, Blocks.BEACON, 14);
 			Codakid.spawnBlock(world, pos, Blocks.TNT, 6);
-			Codakid.spawnItem(world, pos, Main.myIngot, 25);
+			Codakid.spawnItem(world, pos, Main.radiantIngot, 25);
 			Codakid.spawnItem(world, pos, Main.godIngot, 79);
 			Codakid.spawnItem(world, pos, Main.mysticalIngot, 18);
 			Codakid.spawnItem(world, pos, Main.godEraserGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.myNuke, 1);
+			Codakid.spawnItem(world, pos, Main.nuke, 1);
 			Codakid.spawnBlock(world, pos, Main.godLuckyBlock, 1);
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, 2);
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, 2);
 			Codakid.spawnBlock(world, pos, Main.mysticalLuckyBlock, 2);
 			Codakid.spawnBlock(world, pos, Blocks.DROPPER, 1);
-			Codakid.spawnItem(world, pos, Main.myClusterGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.radiantClusterGrenade, 1);
 			Codakid.spawnBlock(world, pos, Main.godBlock, 1);
 		}
 		else if(number <= 120)
@@ -333,7 +333,7 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number <= 160)
 		{
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, 64);
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, 64);
 		}
 		else if(number <= 165)
 		{
@@ -416,7 +416,7 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number <= 235)
 		{
-			world.setBlockState(pos, Main.myStructure.getDefaultState());
+			world.setBlockState(pos, Main.radiantSmallStructure.getDefaultState());
 		}
 		else if(number <= 240)
 		{
@@ -448,7 +448,7 @@ public class GodLuckyBlock extends Block {
 		}
 		else if(number<=275)
 		{
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, rand.nextInt(64)+1);
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, rand.nextInt(64)+1);
 		}
 		else if(number<=280)
 		{
@@ -461,9 +461,9 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnBlock(world, pos, Main.godSmallStructure, rand.nextInt(65));
 			Codakid.spawnBlock(world, pos, Main.godOre, rand.nextInt(65));
 			Codakid.spawnBlock(world, pos, Main.radiantBlock, rand.nextInt(65));
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, rand.nextInt(65));
-			Codakid.spawnBlock(world, pos, Main.myStructure, rand.nextInt(65));
-			Codakid.spawnBlock(world, pos, Main.myOre, rand.nextInt(65));
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, rand.nextInt(65));
+			Codakid.spawnBlock(world, pos, Main.radiantSmallStructure, rand.nextInt(65));
+			Codakid.spawnBlock(world, pos, Main.radiantOre, rand.nextInt(65));
 			Codakid.spawnBlock(world, pos, Main.mysticalBlock, rand.nextInt(65));
 			Codakid.spawnBlock(world, pos, Main.mysticalLuckyBlock, rand.nextInt(65));
 			Codakid.spawnBlock(world, pos, Main.mysticalSmallStructure, rand.nextInt(65));
@@ -475,51 +475,51 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.godBoots, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.godBuildGrenade, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.godEraserGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.recursiveClusterGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.boomGun, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.eraserHammer, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.luckyBlockLauncher, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.godClusterGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.godGrenadeGun, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.godEraserSword, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.godLuckyBlockLauncher, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.godIngot, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.godSword, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.godPickaxe, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.godShovel, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.godAxe, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.godHoe, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myHelmet, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myChestplate, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myLeggings, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myBoots, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myBuildGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.myCustomGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.myClusterGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.cowGun, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.myHammer, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.lavaLauncher, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.myIngot, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.mySword, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myPickaxe, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myShovel, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myAxe, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myHoe, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantHelmet, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantChestplate, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantLeggings, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantBoots, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantBuildGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantClusterGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantTNTGun, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantLightningSword, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantLavaLauncher, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantIngot, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.radiantSword, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantPickaxe, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantShovel, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantAxe, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.radiantHoe, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalHelmet, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalChestplate, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalLeggings, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalBoots, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.myNuke, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.eraserGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.levitationGun, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.portalHammer, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.crystalLauncher, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.nuke, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.mysticalEraserGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.mysticalDragonGun, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.mysticalPortalSword, rand.nextInt(2));
+			Codakid.spawnItem(world, pos, Main.mysticalCrystalLauncher, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.mysticalIngot, rand.nextInt(65));
 			Codakid.spawnItem(world, pos, Main.mysticalSword, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalPickaxe, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalShovel, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalAxe, rand.nextInt(2));
 			Codakid.spawnItem(world, pos, Main.mysticalHoe, rand.nextInt(2));
-			Codakid.spawnItem(world, pos, Main.worldBuildGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.worldErasingGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.worldEndGrenade, rand.nextInt(65));
-			Codakid.spawnItem(world, pos, Main.worldEraserGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.destructionBuildGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.destructionTNTGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.destructionClusterGrenade, rand.nextInt(65));
+			Codakid.spawnItem(world, pos, Main.destructionEraserGrenade, rand.nextInt(65));
 			for (int g=0;g<rand.nextInt(65);g++) {
 				Codakid.spawnEntity(world, pos, new GodLord(world));
 			}
@@ -545,9 +545,9 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnBlock(world, pos, Main.godSmallStructure, 1);
 			Codakid.spawnBlock(world, pos, Main.godOre, 1);
 			Codakid.spawnBlock(world, pos, Main.radiantBlock, 1);
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, 1);
-			Codakid.spawnBlock(world, pos, Main.myStructure, 1);
-			Codakid.spawnBlock(world, pos, Main.myOre, 1);
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, 1);
+			Codakid.spawnBlock(world, pos, Main.radiantSmallStructure, 1);
+			Codakid.spawnBlock(world, pos, Main.radiantOre, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalBlock, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalLuckyBlock, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalSmallStructure, 1);
@@ -559,51 +559,51 @@ public class GodLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.godBoots, 1);
 			Codakid.spawnItem(world, pos, Main.godBuildGrenade, 1);
 			Codakid.spawnItem(world, pos, Main.godEraserGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.recursiveClusterGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.boomGun, 1);
-			Codakid.spawnItem(world, pos, Main.eraserHammer, 1);
-			Codakid.spawnItem(world, pos, Main.luckyBlockLauncher, 1);
+			Codakid.spawnItem(world, pos, Main.godClusterGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.godGrenadeGun, 1);
+			Codakid.spawnItem(world, pos, Main.godEraserSword, 1);
+			Codakid.spawnItem(world, pos, Main.godLuckyBlockLauncher, 1);
 			Codakid.spawnItem(world, pos, Main.godIngot, 1);
 			Codakid.spawnItem(world, pos, Main.godSword, 1);
 			Codakid.spawnItem(world, pos, Main.godPickaxe, 1);
 			Codakid.spawnItem(world, pos, Main.godShovel, 1);
 			Codakid.spawnItem(world, pos, Main.godAxe, 1);
 			Codakid.spawnItem(world, pos, Main.godHoe, 1);
-			Codakid.spawnItem(world, pos, Main.myHelmet, 1);
-			Codakid.spawnItem(world, pos, Main.myChestplate, 1);
-			Codakid.spawnItem(world, pos, Main.myLeggings, 1);
-			Codakid.spawnItem(world, pos, Main.myBoots, 1);
-			Codakid.spawnItem(world, pos, Main.myBuildGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.myCustomGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.myClusterGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.cowGun, 1);
-			Codakid.spawnItem(world, pos, Main.myHammer, 1);
-			Codakid.spawnItem(world, pos, Main.lavaLauncher, 1);
-			Codakid.spawnItem(world, pos, Main.myIngot, 1);
-			Codakid.spawnItem(world, pos, Main.mySword, 1);
-			Codakid.spawnItem(world, pos, Main.myPickaxe, 1);
-			Codakid.spawnItem(world, pos, Main.myShovel, 1);
-			Codakid.spawnItem(world, pos, Main.myAxe, 1);
-			Codakid.spawnItem(world, pos, Main.myHoe, 1);
+			Codakid.spawnItem(world, pos, Main.radiantHelmet, 1);
+			Codakid.spawnItem(world, pos, Main.radiantChestplate, 1);
+			Codakid.spawnItem(world, pos, Main.radiantLeggings, 1);
+			Codakid.spawnItem(world, pos, Main.radiantBoots, 1);
+			Codakid.spawnItem(world, pos, Main.radiantBuildGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.radiantGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.radiantClusterGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.radiantTNTGun, 1);
+			Codakid.spawnItem(world, pos, Main.radiantLightningSword, 1);
+			Codakid.spawnItem(world, pos, Main.radiantLavaLauncher, 1);
+			Codakid.spawnItem(world, pos, Main.radiantIngot, 1);
+			Codakid.spawnItem(world, pos, Main.radiantSword, 1);
+			Codakid.spawnItem(world, pos, Main.radiantPickaxe, 1);
+			Codakid.spawnItem(world, pos, Main.radiantShovel, 1);
+			Codakid.spawnItem(world, pos, Main.radiantAxe, 1);
+			Codakid.spawnItem(world, pos, Main.radiantHoe, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalHelmet, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalChestplate, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalLeggings, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalBoots, 1);
-			Codakid.spawnItem(world, pos, Main.myNuke, 1);
-			Codakid.spawnItem(world, pos, Main.eraserGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.levitationGun, 1);
-			Codakid.spawnItem(world, pos, Main.portalHammer, 1);
-			Codakid.spawnItem(world, pos, Main.crystalLauncher, 1);
+			Codakid.spawnItem(world, pos, Main.nuke, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalEraserGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalDragonGun, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalPortalSword, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalCrystalLauncher, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalIngot, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalSword, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalPickaxe, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalShovel, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalAxe, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalHoe, 1);
-			Codakid.spawnItem(world, pos, Main.worldBuildGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.worldErasingGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.worldEndGrenade, 1);
-			Codakid.spawnItem(world, pos, Main.worldEraserGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.destructionBuildGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.destructionTNTGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.destructionClusterGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.destructionEraserGrenade, 1);
 			Codakid.spawnEntity(world, pos, new GodLord(world));
 			Codakid.spawnEntity(world, pos, new RadiantLord(world));
 			Codakid.spawnEntity(world, pos, new MysticalLord(world));

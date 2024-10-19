@@ -7,7 +7,7 @@
   ],
   "key": {
     "r": { 
-      "item": "foundations:my_ingot"
+      "item": "foundations:radiant_ingot"
      },
     "t": { 
       "item": "minecraft:tnt"
@@ -17,6 +17,6 @@
      }
   },
   "result": {
-    "item": "foundations:my_nuke"
+    "item": "foundations:nuke"
   }
 }

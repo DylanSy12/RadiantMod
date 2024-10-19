@@ -23,7 +23,7 @@ import mymod._01_ForgeYourSword.LegendRadiantSword;
 import mymod._03_MagicArmor.RadiantArmor;
 import mymod._03_MagicArmor.DestructionArmor;
 import mymod._03_MagicArmor.GodArmor;
-import mymod._03_MagicArmor.GodlyPotionOrb;
+import mymod._03_MagicArmor.GodPotionOrb;
 import mymod._03_MagicArmor.MysticalArmor;
 import mymod._04_CreateACreature.DestructionLord;
 import mymod._04_CreateACreature.GodLord;
@@ -816,14 +816,14 @@ public class CustomEvents {
 			}
 		}
 		for (ItemStack stack:player.inventory.mainInventory) {
-			if (stack.getItem() instanceof GodlyPotionOrb) {
+			if (stack.getItem() instanceof GodPotionOrb) {
 				player.capabilities.allowFlying = true;
 				player.capabilities.writeCapabilitiesToNBT(player.getEntityData());
 				player.resetCooldown();
 			}
 		}
 		for (ItemStack stack:player.inventory.offHandInventory) {
-			if (stack.getItem() instanceof GodlyPotionOrb) {
+			if (stack.getItem() instanceof GodPotionOrb) {
 				player.capabilities.allowFlying = true;
 				player.capabilities.writeCapabilitiesToNBT(player.getEntityData());
 				player.resetCooldown();

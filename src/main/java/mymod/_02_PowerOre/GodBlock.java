@@ -10,15 +10,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GodBlock extends Block {
-
-	public GodBlock(){
-		
+public class GodBlock extends Block 
+{
+	public GodBlock()
+	{
 		super(Material.ROCK);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(4f);
 		this.setHarvestLevel("pickaxe", 1);
 		this.setLightLevel(1.0f);
 	}
-	
 }

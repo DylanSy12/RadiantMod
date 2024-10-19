@@ -11,10 +11,10 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MysticalBlock extends Block {
-
-	public MysticalBlock(){
-		
+public class MysticalBlock extends Block 
+{
+	public MysticalBlock()
+	{
 		super(Material.ROCK);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setHardness(4f);
@@ -22,5 +22,4 @@ public class MysticalBlock extends Block {
 		this.setLightLevel(0.5f);
 		//this.isBeaconBase(worldObj, pos, beacon);
 	}
-	
 }

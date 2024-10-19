@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 
-public class GodHoe extends ItemHoe {
-	
-	public GodHoe() {
-		super(Main.myToolMaterial17);
+public class GodHoe extends ItemHoe 
+{
+	public GodHoe() 
+	{
+		super(Main.godHoeMaterial);
 		this.setCreativeTab(CreativeTabs.TOOLS);
 	}
-
 }

@@ -68,7 +68,7 @@ public class LegendDestructionSword2 extends ItemSword
 	
 	public LegendDestructionSword2() 
 	{
-		super(Main.myToolMaterial24);
+		super(Main.legendDestructionSwordMaterial);
 		this.setCreativeTab(CreativeTabs.COMBAT);
 //		this.explosionStrength = 15;
 //		this.using = false;

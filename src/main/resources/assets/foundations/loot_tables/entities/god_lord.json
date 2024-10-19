@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "name": "foundations:god_lord",
+      "rolls": 5,
+      "entries": [
+        {
+          "type": "item",
+          "name": "foundations:god_ingot",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "foundations:god_block",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "foundations:god_lucky_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

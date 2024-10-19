@@ -27,10 +27,10 @@ import mymod.CodakidFiles.Codakid;
 import mymod._01_ForgeYourSword.RadiantLord;
 import mymod._04_CreateACreature.GodLord;
 import mymod._04_CreateACreature.MysticalLord;
-import mymod._07_BuildAndBoom.EntityBuildGrenade;
-import mymod._07_BuildAndBoom.EntityClusterGrenade;
-import mymod._07_BuildAndBoom.EntityEraserGrenade;
-import mymod._07_BuildAndBoom.EntityGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantBuildGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantClusterGrenade;
+import mymod._07_BuildAndBoom.EntityMysticalEraserGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantGrenade;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockObsidian;
 import net.minecraft.block.material.Material;
@@ -94,7 +94,7 @@ public class MysticalLuckyBlock extends Block {
 		}
 		else if(number <= 10)
 		{
-			Codakid.spawnEntity(world, pos, new EntityBuildGrenade(world));
+			Codakid.spawnEntity(world, pos, new EntityRadiantBuildGrenade(world));
 		}
 		else if(number <= 12)
 		{
@@ -102,7 +102,7 @@ public class MysticalLuckyBlock extends Block {
 		}
 		else if(number <= 16)
 		{
-			Codakid.spawnEntity(world, pos, new EntityGrenade(world));
+			Codakid.spawnEntity(world, pos, new EntityRadiantGrenade(world));
 		}
 		else if(number <= 24)
 		{
@@ -115,10 +115,10 @@ public class MysticalLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Main.mysticalPickaxe, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalOre, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalLuckyBlock, 1);
-			Codakid.spawnItem(world, pos, Main.portalHammer, 1);
-			Codakid.spawnItem(world, pos, Main.crystalLauncher, 1);
-			Codakid.spawnItem(world, pos, Main.levitationGun, 1);
-			Codakid.spawnItem(world, pos, Main.eraserGrenade, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalPortalSword, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalCrystalLauncher, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalDragonGun, 1);
+			Codakid.spawnItem(world, pos, Main.mysticalEraserGrenade, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalBlock, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalAxe, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalShovel, 1);
@@ -126,7 +126,7 @@ public class MysticalLuckyBlock extends Block {
 		}
 		else if(number <= 33)
 		{
-			Codakid.spawnEntity(world, pos, new EntityEraserGrenade(world));
+			Codakid.spawnEntity(world, pos, new EntityMysticalEraserGrenade(world));
 		}
 		else if(number <= 35)
 		{
@@ -141,7 +141,7 @@ public class MysticalLuckyBlock extends Block {
 		}
 		else if(number <= 40)
 		{
-			world.setBlockState(pos.add(0,35,0), Main.luckyBlockF.getDefaultState());
+			world.setBlockState(pos.add(0,35,0), Main.radiantLuckyBlockF.getDefaultState());
 		}
 		
 		else if(number <= 44)
@@ -284,7 +284,7 @@ public class MysticalLuckyBlock extends Block {
 		{
 			Codakid.spawnBlock(world, pos, Blocks.TNT, 1);
 			Codakid.spawnItem(world, pos, Main.mysticalIngot, 73);
-			Codakid.spawnItem(world, pos, Main.myIngot, 4);
+			Codakid.spawnItem(world, pos, Main.radiantIngot, 4);
 			Codakid.spawnItem(world, pos, Items.DIAMOND, 13);
 			Codakid.spawnBlock(world, pos, Blocks.OBSIDIAN, 12);
 			ItemStack lapis1=new ItemStack(Items.DYE,22);
@@ -299,7 +299,7 @@ public class MysticalLuckyBlock extends Block {
 			Codakid.spawnItem(world, pos, Items.END_CRYSTAL, 3);
 			Codakid.spawnItem(world, pos, Items.SHULKER_SHELL, 2);
 			Codakid.spawnBlock(world, pos, Blocks.DROPPER, 1);
-			Codakid.spawnBlock(world, pos, Main.luckyBlock, 1);
+			Codakid.spawnBlock(world, pos, Main.radiantLuckyBlock, 1);
 			Codakid.spawnBlock(world, pos, Main.godLuckyBlock, 1);
 			Codakid.spawnBlock(world, pos, Main.mysticalBlock, 1);
 		}
@@ -472,7 +472,7 @@ public class MysticalLuckyBlock extends Block {
 		}
 		else if(number <= 220)
 		{
-			world.setBlockState(pos, Main.myStructure.getDefaultState());
+			world.setBlockState(pos, Main.radiantSmallStructure.getDefaultState());
 		}
 		else if(number <= 225)
 		{

@@ -51,7 +51,7 @@ public class GodSmallStructureBlock extends Block {
 			for (int z=-2;z<=2;z++) {
 				for (int y=0;y<=2;y++) {
 					IBlockState block=world.getBlockState(pos.add(x, y, z));
-					if (block!=Main.godLuckyBlock.getDefaultState() && block!=Main.luckyBlock.getDefaultState() && block!=Main.mysticalLuckyBlock.getDefaultState()) {
+					if (block!=Main.godLuckyBlock.getDefaultState() && block!=Main.radiantLuckyBlock.getDefaultState() && block!=Main.mysticalLuckyBlock.getDefaultState()) {
 						world.setBlockState(pos.add(x, y, z), Blocks.QUARTZ_BLOCK.getDefaultState());
 						if (y!=0) {
 							if (x>-2 && x<2 && z>-2 && z<2) {

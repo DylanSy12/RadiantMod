@@ -1,10 +1,10 @@
 package mymod.CodakidFiles;
 
 import mymod.Main;
-import mymod._05_LuckyBlock.CustomNuke;
+import mymod._05_LuckyBlock.Nuke;
 import mymod._05_LuckyBlock.EntityNuke;
 import mymod._07_BuildAndBoom.EntityCustomExplosion;
-import mymod._07_BuildAndBoom.EntityGrenade;
+import mymod._07_BuildAndBoom.EntityRadiantGrenade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;

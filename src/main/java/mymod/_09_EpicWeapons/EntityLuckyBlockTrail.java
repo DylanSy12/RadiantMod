@@ -19,7 +19,7 @@ public class EntityLuckyBlockTrail extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		world.setBlockState(new BlockPos(this.lastTickPosX, this.lastTickPosY, this.lastTickPosZ), Main.luckyBlock.getDefaultState());
+		world.setBlockState(new BlockPos(this.lastTickPosX, this.lastTickPosY, this.lastTickPosZ), Main.radiantLuckyBlock.getDefaultState());
 		world.setBlockState(new BlockPos(this.lastTickPosX, this.lastTickPosY - 1, this.lastTickPosZ), Main.mysticalLuckyBlock.getDefaultState());
 		world.setBlockState(new BlockPos(this.lastTickPosX, this.lastTickPosY + 1, this.lastTickPosZ), Main.godLuckyBlock.getDefaultState());
 	}
